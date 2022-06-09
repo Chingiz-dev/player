@@ -1,4 +1,5 @@
-import { Album, Song } from './classes.mjs';
+import Album from './album.mjs';
+import Song from './song.mjs';
 
 const myAlbum = new Album();
 

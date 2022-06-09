@@ -1,4 +1,4 @@
-function Album() {
+export default function Album() {
   this.album = [];
 
   this.addSong = function (song) {
@@ -43,14 +43,3 @@ function Album() {
     console.log(alToShow);
   };
 }
-
-function Song(id, singer, title, genre, favorite) {
-  this.id = id;
-  this.title = title;
-  this.date = Date();
-  this.singer = singer;
-  this.genre = genre;
-  this.favorite = favorite;
-}
-
-export { Album, Song };
