@@ -18,14 +18,9 @@ let sixthSong = new Song(
 let seventhSong = new Song(7, "nirvana", "come as you are", "rock", false);
 let eighthSong = new Song(8, "metallica", "battery", "heavy metal", true);
 
-myAlbum.addSong(firstSong);
-myAlbum.addSong(secondSong);
-myAlbum.addSong(thirdSong);
-myAlbum.addSong(fourthSong);
-myAlbum.addSong(fifthSong);
-myAlbum.addSong(sixthSong);
-myAlbum.addSong(seventhSong);
-myAlbum.addSong(eighthSong);
+myAlbum.addSongs(firstSong, secondSong, thirdSong);
+myAlbum.addSongs(fourthSong, fifthSong, sixthSong, seventhSong);
+myAlbum.addSongs(eighthSong);
 
 myAlbum.sortSongs();
 myAlbum.sortSongs("des");
