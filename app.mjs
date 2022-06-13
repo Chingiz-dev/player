@@ -1,5 +1,6 @@
 import Album from "./album.mjs";
 import Song from "./song.mjs";
+import DetailedSong from "./detailedSong.mjs";
 
 (function () {
   const myAlbum = new Album();
@@ -18,10 +19,11 @@ import Song from "./song.mjs";
   );
   let seventhSong = new Song(7, "nirvana", "come as you are", "rock", false);
   let eighthSong = new Song(8, "metallica", "battery", "heavy metal", true);
+  let ninthSong = new DetailedSong(220, "tequilla", 8, "the champs", "tequila song", "jazz", false);
 
   myAlbum.addSongs(firstSong, secondSong, thirdSong);
   myAlbum.addSongs(fourthSong, fifthSong, sixthSong, seventhSong);
-  myAlbum.addSongs(eighthSong);
+  myAlbum.addSongs(eighthSong, ninthSong);
 
   myAlbum.sortSongs();
   myAlbum.sortSongs("des");
