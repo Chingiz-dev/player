@@ -7,4 +7,7 @@ export default class Song {
     this.favorite = favorite;
     this.date = date;
   }
+  playSong() {
+    console.log(`${this.title} is performed by ${this.singer}`);
+  }
 }
