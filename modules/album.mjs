@@ -1,6 +1,10 @@
 class Album {
   album = [];
 
+  constructor(...songs) {
+    this.album.push(...songs);
+  }
+
   deleteSong(...idList) {
     idList.forEach((id) => {
       this.album = this.album.filter((item) => item.id !== id);
@@ -23,20 +27,21 @@ class Album {
     console.log(this.album);
   }
 
-  showFavoriteSongs(favorite = false) {
-    favorite
-      ? console.log(this.album.filter((song) => song.favorite))
-      : console.log(this.album.filter((song) => !song.favorite));
+  getFavoriteSongs() {
+    return this.album.filter((song) => song.favorite);
   }
 
-  showOneForSinger() {
-    let alToShow = this.album.reduce((newAlbum, current) => {
+  getNotFavoriteSongs() {
+    return this.album.filter((song) => !song.favorite);
+  }
+
+  getOneForSinger() {
+    return this.album.reduce((newAlbum, current) => {
       if (!newAlbum.some((x) => x.singer === current.singer)) {
         newAlbum.push(current);
       }
       return newAlbum;
     }, []);
-    console.log(alToShow);
   }
 
   addSongs(...songs) {
