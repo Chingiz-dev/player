@@ -19,7 +19,15 @@ import DetailedSong from "./detailedSong.mjs";
   );
   let seventhSong = new Song(7, "nirvana", "come as you are", "rock", false);
   let eighthSong = new Song(8, "metallica", "battery", "heavy metal", true);
-  let ninthSong = new DetailedSong(220, "tequilla", 8, "the champs", "tequila song", "jazz", false);
+  let ninthSong = new DetailedSong(
+    220,
+    "tequilla",
+    8,
+    "the champs",
+    "tequila song",
+    "jazz",
+    false
+  );
 
   myAlbum.addSongs(firstSong, secondSong, thirdSong);
   myAlbum.addSongs(fourthSong, fifthSong, sixthSong, seventhSong);
@@ -33,4 +41,5 @@ import DetailedSong from "./detailedSong.mjs";
   myAlbum.showFavoriteSongs(1);
   myAlbum.showFavoriteSongs();
   myAlbum.showOneForSinger();
+  myAlbum.playAlbum();
 })();
