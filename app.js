@@ -1,6 +1,6 @@
-import Album from "./album.mjs";
-import Song from "./song.mjs";
-import DetailedSong from "./detailedSong.mjs";
+import Album from "./modules/album.mjs";
+import Song from "./modules/song.mjs";
+import DetailedSong from "./modules/detailedSong.mjs";
 
 (function () {
   const myAlbum = new Album();
