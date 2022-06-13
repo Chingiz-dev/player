@@ -1,13 +1,13 @@
 class Album {
   album = [];
 
-  deleteSong = function (...idList) {
+  deleteSong(...idList) {
     idList.forEach((id) => {
       this.album = this.album.filter((item) => item.id !== id);
     });
   };
   
-  sortSongs = function (direct = "asc") {
+  sortSongs(direct = "asc") {
     if (direct === "asc") {
       this.album.sort((a, b) =>
         a.title > b.title ? 1 : a.title < b.title ? -1 : 0
@@ -19,17 +19,17 @@ class Album {
     }
   };
   
-  showPlaylist = function () {
+  showPlaylist() {
     console.log(this.album);
   };
   
-  showFavoriteSongs = function (favorite = false) {
+  showFavoriteSongs(favorite = false) {
     favorite
       ? console.log(this.album.filter((song) => song.favorite))
       : console.log(this.album.filter((song) => !song.favorite));
   };
   
-  showOneForSinger = function () {
+  showOneForSinger() {
     let alToShow = this.album.reduce((newAlbum, current) => {
       if (!newAlbum.some((x) => x.singer === current.singer)) {
         newAlbum.push(current);
@@ -39,7 +39,7 @@ class Album {
     console.log(alToShow);
   };
   
-  addSongs = function (...songs) {
+  addSongs(...songs) {
     this.album.push(...songs);
   };
 }
