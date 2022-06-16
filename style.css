@@ -1,3 +1,5 @@
+@import url(./modules/player/player.css);
+
 *{
   box-sizing: border-box;
 	border: none;
@@ -9,16 +11,15 @@ html,body{
 	width: 100%;
 	min-width: 320px;
 	min-height: 480px;
-	background-color: brown;
 }
 a,a:hover,a:link{
 	text-decoration: none;
 }
 
-.player {
+.root {
 	min-width: 600px;
 	max-width: 1000px;
-	background-color: antiquewhite;
+	background-color: brown;
 	padding: 20px;
 	border: 2px solid white;
 	margin: 100px auto;
