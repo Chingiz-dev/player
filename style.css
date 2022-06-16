@@ -1,0 +1,15 @@
+*{
+  box-sizing: border-box;
+	border: none;
+	margin: 0;
+	padding: 0;	
+	font-family: Exo_m;
+}
+html,body{
+	width: 100%;
+	min-width: 320px;
+	min-height: 480px;
+}
+a,a:hover,a:link{
+	text-decoration: none;
+}
