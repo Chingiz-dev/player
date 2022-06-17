@@ -1,9 +1,6 @@
 class Player {
-  //ex Album
-  // #region fields
   name = "my playlist"
   playlist = [];
-  // #endregion fields
 
   constructor(name, songs) {
     this.name = name;
@@ -53,9 +50,9 @@ class Player {
     this.playlist.push(...songs);
   }
 
-  playplaylist() {
-    this.playlist.forEach((song) => song.playSong());
-  }
+  // playplaylist() {
+  //   this.playlist.forEach((song) => song.playSong());
+  // }
 }
 
 export default Player;

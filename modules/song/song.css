@@ -1,0 +1,17 @@
+.song__title {
+  color: red;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.song__singer {
+  margin-right: 10px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.song__lyrics {
+  margin-left: 30px;
+  font-weight: 300;
+  font-size: 20px;
+}
