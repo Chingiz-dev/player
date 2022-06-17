@@ -32,8 +32,9 @@ const songsObj = songsList.map((s) => {
 
 const album = new Player("Chingiz Playlist", songsObj);
 const player = new PlayerComponent(entryPoint, album);
-const song = new Song(3, "fugees", "no woman, no cry", "rap", true);
+const song = new Song(3, "url", "fugees", "no woman, no cry", "rap", true);
 // player.addSong(song);
 setTimeout(()=>player.addSong(song),2000);
-setTimeout(()=>player.changeTitle('hoj'),1000);
+setTimeout(()=>player.sortSongs(), 2000);
+setTimeout(()=>player.changeTitle('SiMpLe dImPlE'),1000);
 

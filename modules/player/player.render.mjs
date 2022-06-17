@@ -6,6 +6,15 @@ class PlayerRender extends CoreRender {
   playerHTMLElement;
   controlsHTMLElement;
   songEditHTMLElement;
+  songListHTMLElement;
+
+  addSongHTMLElement;
+  sortSongsHTMLElement;
+  
+
+  getControlsHTMLElements() {
+
+  }
 
 
   getSongElement(song) {
@@ -45,16 +54,24 @@ class PlayerRender extends CoreRender {
     return player.playlist.map((song) => this.getSongElement(song));
   }
 
-  getsongListElement(player) {
-    const songListHTMLElement = this.createElement("div", [
+  getSongListElement(player) {
+    this.songListHTMLElement = this.createElement("div", [
       "player__song-list",
     ]);
-
     const songHTMLElements = this.getsongElements(player);
     songHTMLElements.forEach((element) =>
-      songListHTMLElement.appendChild(element)
+    this.songListHTMLElement.appendChild(element)
     );
-    return songListHTMLElement;
+    return this.songListHTMLElement;
+  }
+
+  renderSongListElement(player) {
+    this.songListHTMLElement.innerHTML = "";
+    const songHTMLElements = this.getsongElements(player);
+    songHTMLElements.forEach((element) =>
+    this.songListHTMLElement.appendChild(element)
+    );
+    console.log('render playlist');
   }
 
   getTitleElement(player) {
@@ -67,7 +84,7 @@ class PlayerRender extends CoreRender {
   
   renderTitleElement(title) {
     this.titleHTMLElement.innerHTML = `<em>${title}</em>`;
-    console.log(this.titleHTMLElement);
+    console.log('render title');
   }
 
   render(node, player, classList = []) {
@@ -79,7 +96,7 @@ class PlayerRender extends CoreRender {
     ]);
 
     this.playerHTMLElement.appendChild(this.getTitleElement(player));
-    this.playerHTMLElement.appendChild(this.getsongListElement(player));
+    this.playerHTMLElement.appendChild(this.getSongListElement(player));
 
     node.appendChild(this.playerHTMLElement);
     console.log('rendering');

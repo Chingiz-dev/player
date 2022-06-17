@@ -1,11 +1,76 @@
 [
   {
-    "id": 5,
+    "id": 1,
     "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
     "title": "killing me softly",
     "singer": "fugees",
     "genre": "rap",
     "favorite": true,
     "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 2,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "score",
+    "singer": "fugees",
+    "genre": "rap",
+    "favorite": false,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 4,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "come as you are",
+    "singer": "nirvana",
+    "genre": "rock",
+    "favorite": false,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 5,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "battery",
+    "singer": "metallica",
+    "genre": "heavy metal",
+    "favorite": true,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 6,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "master of puppets",
+    "singer": "metallica",
+    "genre": "heavy metal",
+    "favorite": false,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 7,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "come as you are",
+    "singer": "nirvana",
+    "genre": "rock",
+    "favorite": false,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 8,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "battery",
+    "singer": "metallica",
+    "genre": "heavy metal",
+    "favorite": true,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
+    "id": 8,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
+    "title": "tequila song",
+    "singer": "the champs",
+    "genre": "jazz",
+    "favorite": false,
+    "date": "2022-06-13T10:20:03.896Z",
+    "duration": 220,
+    "desc": "tequilla one word song"
   }
 ]

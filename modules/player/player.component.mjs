@@ -21,24 +21,17 @@ class PlayerComponent {
 
   addSong(song) {
     this.album.addSongs(song);
-    this.playerRender.render(document.querySelector(".root"), this.album, [
-      "some",
-    ]);
-    // this.playerRender.renderListElement(this.album);
+    this.playerRender.renderSongListElement(this.album);
   }
 
   sortSongs() {
     this.album.sortSongs();
-    this.playerRender.render(document.querySelector(".root"), this.album, [
-      "some",
-    ]);
+    this.playerRender.renderSongListElement(this.album);
   }
 
   deleteSong(id) {
     this.album.deleteSong(id);
-    this.playerRender.render(document.querySelector(".root"), this.album, [
-      "some",
-    ]);
+    this.playerRender.renderSongListElement(this.album);
   }
 }
 
