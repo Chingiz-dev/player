@@ -14,6 +14,11 @@ class PlayerComponent {
     ]);
   }
 
+  changeTitle(title) {
+    this.album.name = title;
+    this.playerRender.renderTitleElement(title);
+  }
+
   addSong(song) {
     this.album.addSongs(song);
     this.playerRender.render(document.querySelector(".root"), this.album, [

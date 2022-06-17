@@ -1,6 +1,13 @@
 import CoreRender from "../CoreRender.mjs";
 
 class PlayerRender extends CoreRender {
+  containerHTMLElement;
+  titleHTMLElement;
+  playerHTMLElement;
+  controlsHTMLElement;
+  songEditHTMLElement;
+
+
   getSongElement(song) {
     const songHTMLElement = this.createElement("div", ["player__song"]);
     const titleHTMLelement = this.createElement(
@@ -51,25 +58,31 @@ class PlayerRender extends CoreRender {
   }
 
   getTitleElement(player) {
-    return this.createElement(
+    return this.titleHTMLElement = this.createElement(
       "div",
       ["player__title"],
       `<em>${player.name}</em>`
     );
   }
+  
+  renderTitleElement(title) {
+    this.titleHTMLElement.innerHTML = `<em>${title}</em>`;
+    console.log(this.titleHTMLElement);
+  }
 
   render(node, player, classList = []) {
     node.innerHTML = "";
 
-    const playerHTMLElement = this.createElement("div", [
+    this.playerHTMLElement = this.createElement("div", [
       "player",
       ...classList,
     ]);
 
-    playerHTMLElement.appendChild(this.getTitleElement(player));
-    playerHTMLElement.appendChild(this.getsongListElement(player));
+    this.playerHTMLElement.appendChild(this.getTitleElement(player));
+    this.playerHTMLElement.appendChild(this.getsongListElement(player));
 
-    node.appendChild(playerHTMLElement);
+    node.appendChild(this.playerHTMLElement);
+    console.log('rendering');
   }
 }
 
