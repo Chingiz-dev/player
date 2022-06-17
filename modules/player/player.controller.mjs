@@ -10,8 +10,9 @@ class PlayerController {
     return s.duration
       ? new DetailedSong(
           s.duration,
-          s.lyrics,
+          s.desc,
           s.id,
+          s.url,
           s.singer,
           s.title,
           s.genre,
@@ -20,6 +21,7 @@ class PlayerController {
         )
       : new Song(
           s.id,
+          s.url,
           s.singer,
           s.title,
           s.genre,

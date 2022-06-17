@@ -1,68 +1,11 @@
 [
   {
-    "id": 1,
+    "id": 5,
+    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
     "title": "killing me softly",
     "singer": "fugees",
     "genre": "rap",
     "favorite": true,
     "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 2,
-    "title": "score",
-    "singer": "fugees",
-    "genre": "rap",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 4,
-    "title": "come as you are",
-    "singer": "nirvana",
-    "genre": "rock",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 5,
-    "title": "battery",
-    "singer": "metallica",
-    "genre": "heavy metal",
-    "favorite": true,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 6,
-    "title": "master of puppets",
-    "singer": "metallica",
-    "genre": "heavy metal",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 7,
-    "title": "come as you are",
-    "singer": "nirvana",
-    "genre": "rock",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 8,
-    "title": "battery",
-    "singer": "metallica",
-    "genre": "heavy metal",
-    "favorite": true,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 8,
-    "title": "tequila song",
-    "singer": "the champs",
-    "genre": "jazz",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z",
-    "duration": 220,
-    "lyrics": "tequilla"
   }
 ]
