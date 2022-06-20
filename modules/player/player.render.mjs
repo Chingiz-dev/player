@@ -4,18 +4,60 @@ class PlayerRender extends CoreRender {
   containerHTMLElement;
   titleHTMLElement;
   playerHTMLElement;
-  controlsHTMLElement;
+  inputControlsElement;
   songEditHTMLElement;
   songListHTMLElement;
 
   addSongHTMLElement;
   sortSongsHTMLElement;
+
+  titleControlsElement;
+  inputTitleElement;
+  inputSingerElement;
+  inputGenreElement;
+  inputURLElement;
+  inputSubmitElement;
   
 
   getControlsHTMLElements() {
-
+    this.inputControlsElement = this.createElement("div", ["player__controls"]);
+    this.titleControlsElement = this.createElement('h2', ['control__title'], 'adding a song');
+    this.inputTitleElement = this.createElement(
+      "input",
+      ["song__input"]
+    );
+    this.inputTitleElement.placeholder = "enter song name";
+    this.inputSingerElement = this.createElement(
+      "input",
+      ["song__input"]
+    );
+    this.inputSingerElement.placeholder = "enter singer name";
+    this.inputGenreElement = this.createElement(
+      "input",
+      ["song__input"]
+    );
+    this.inputGenreElement.placeholder = "enter genre";
+    this.inputURLElement = this.createElement(
+      "input",
+      ["song__input"]
+    );
+    this.inputURLElement.placeholder = "enter url";
+    this.inputSubmitElement = this.createElement(
+      "input",
+      ["song__input-submit"]
+    );
+    this.inputSubmitElement.value = "submit";
+    this.inputControlsElement.append(
+      this.titleControlsElement,
+      this.inputTitleElement,
+      this.inputSingerElement,
+      this.inputGenreElement,
+      this.inputURLElement,
+      this.inputSubmitElement
+    );
+    
+    return this.inputControlsElement;
   }
-
 
   getSongElement(song) {
     const songHTMLElement = this.createElement("div", ["player__song"]);
@@ -39,11 +81,11 @@ class PlayerRender extends CoreRender {
       singerHTMLelement,
       genreHTMLelement
     );
-    if (!!song.lyrics) {
+    if (!!song.desc) {
       const lyricsHTMLelement = this.createElement(
         "div",
-        ["song__lyrics"],
-        song.lyrics
+        ["song__desc"],
+        song.desc
       );
       songHTMLElement.appendChild(lyricsHTMLelement);
     }
@@ -95,6 +137,7 @@ class PlayerRender extends CoreRender {
       ...classList,
     ]);
 
+    this.playerHTMLElement.appendChild(this.getControlsHTMLElements());
     this.playerHTMLElement.appendChild(this.getTitleElement(player));
     this.playerHTMLElement.appendChild(this.getSongListElement(player));
 
