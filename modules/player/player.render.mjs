@@ -8,6 +8,8 @@ class PlayerRender extends CoreRender {
   inputControlsElement;
   songEditHTMLElement;
   songListHTMLElement;
+  songHTMLDeleteElement;
+
 
   addSongHTMLElement;
   sortSongsHTMLElement;
@@ -63,6 +65,9 @@ class PlayerRender extends CoreRender {
 
   getSongElement(song) {
     const songHTMLElement = this.createElement("div", ["player__song"]);
+    const songHTMLDeleteElement = this.createElement("div", ["player__song__delete"]);
+    songHTMLDeleteElement.setAttribute('data-id', song.id);
+    songHTMLDeleteElement.innerHTML = "X";
     const titleHTMLelement = this.createElement(
       "div",
       ["song__title"],
@@ -79,6 +84,7 @@ class PlayerRender extends CoreRender {
       song.genre
     );
     songHTMLElement.append(
+      songHTMLDeleteElement,
       titleHTMLelement,
       singerHTMLelement,
       genreHTMLelement

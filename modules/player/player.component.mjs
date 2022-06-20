@@ -30,6 +30,17 @@ class PlayerComponent {
     this.singer.addEventListener("change", this.changeInputs);
     this.genre.addEventListener("change", this.changeInputs);
     this.url.addEventListener("change", this.changeInputs);
+
+
+    this.playerRender.songListHTMLElement.addEventListener(
+      "click",
+      (event) => {
+        const currentID = Number(event.target.getAttribute("data-id"));
+        if (currentID !== null) {
+          this.deleteSong(currentID);
+        }
+      }
+    );
   }
 
   changeTitle = () => {
@@ -51,7 +62,7 @@ class PlayerComponent {
 
   addSong = (event) => {
     const song = new Song(
-      this.getNewId,
+      this.getNewId(),
       this.url.value,
       this.singer.value,
       this.title.value,
@@ -78,8 +89,8 @@ class PlayerComponent {
   }
 
   getNewId() {
-    return this.library.books.length > 0
-      ? Math.max(...this.album.song.map((spng) => song.id)) + 1
+    return this.album.playlist.length > 0
+      ? Math.max(...this.album.playlist.map((song) => song.id)) + 1
       : 0;
   }
 }
