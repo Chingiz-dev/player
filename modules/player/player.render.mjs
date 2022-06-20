@@ -3,6 +3,7 @@ import CoreRender from "../CoreRender.mjs";
 class PlayerRender extends CoreRender {
   containerHTMLElement;
   titleHTMLElement;
+  inputListTitleElement;
   playerHTMLElement;
   inputControlsElement;
   songEditHTMLElement;
@@ -47,6 +48,8 @@ class PlayerRender extends CoreRender {
       ["song__input-submit"]
     );
     this.inputSubmitElement.value = "submit";
+    this.inputSubmitElement.type = "submit";
+    this.inputSubmitElement.disabled = true;
     this.inputControlsElement.append(
       this.titleControlsElement,
       this.inputTitleElement,
@@ -54,8 +57,7 @@ class PlayerRender extends CoreRender {
       this.inputGenreElement,
       this.inputURLElement,
       this.inputSubmitElement
-    );
-    
+    );    
     return this.inputControlsElement;
   }
 
@@ -123,6 +125,15 @@ class PlayerRender extends CoreRender {
       `<em>${player.name}</em>`
     );
   }
+
+  getTitleInputElement(){    
+    this.inputListTitleElement = this.createElement(
+      "input",
+      ["song__input"]
+    );
+    this.inputListTitleElement.placeholder = "change playlist name";
+    return this.inputListTitleElement;
+  }
   
   renderTitleElement(title) {
     this.titleHTMLElement.innerHTML = `<em>${title}</em>`;
@@ -139,6 +150,7 @@ class PlayerRender extends CoreRender {
 
     this.playerHTMLElement.appendChild(this.getControlsHTMLElements());
     this.playerHTMLElement.appendChild(this.getTitleElement(player));
+    this.playerHTMLElement.appendChild(this.getTitleInputElement());
     this.playerHTMLElement.appendChild(this.getSongListElement(player));
 
     node.appendChild(this.playerHTMLElement);

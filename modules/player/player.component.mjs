@@ -5,54 +5,82 @@ import Song from "./models/song.mjs";
 class PlayerComponent {
   playerRender;
   album;
-  
+  title;
+  singer;
+  genre;
+  url;
+
   constructor(entryPoint, album) {
     this.playerRender = new PlayerRender();
     this.album = album;
-    this.playerRender.render(entryPoint, this.album, [
-      "some",
-    ]);
+    this.playerRender.render(entryPoint, this.album, ["some"]);
+
+    this.title = this.playerRender.inputTitleElement;
+    this.singer = this.playerRender.inputSingerElement;
+    this.genre = this.playerRender.inputGenreElement;
+    this.url = this.playerRender.inputURLElement;
+
+    this.playerRender.inputListTitleElement.addEventListener("change", this.changeTitle);
+
     this.playerRender.inputSubmitElement.addEventListener(
       "click",
       this.addSong
     );
+    this.title.addEventListener("change", this.changeInputs);
+    this.singer.addEventListener("change", this.changeInputs);
+    this.genre.addEventListener("change", this.changeInputs);
+    this.url.addEventListener("change", this.changeInputs);
   }
 
-  changeTitle(title) {
-    this.album.name = title;
-    this.playerRender.renderTitleElement(title);
+  changeTitle = () => {
+    this.album.name = this.playerRender.inputListTitleElement;
+    this.playerRender.renderTitleElement(this.playerRender.inputListTitleElement.value);
+    this.playerRender.inputListTitleElement.value = "";
   }
 
-  addSong = (event)=> {
-    // this.playerRender.titleControlsElement;
+  changeInputs = (e) => {
+    if (
+      !!this.url.value &&
+      !!this.singer.value &&
+      !!this.title.value &&
+      !!this.genre.value
+    ) {
+      this.playerRender.inputSubmitElement.disabled = false;
+    }
+  };
 
-    console.log(this.playerRender.inputTitleElement.value);
-    const title = this.playerRender.inputTitleElement.value;
-    const singer = this.playerRender.inputSingerElement.value;
-    const genre = this.playerRender.inputGenreElement.value;
-    const url = this.playerRender.inputURLElement.value;
-    
-    const song = new Song(this.getNewId, url,  singer, title,  genre);
-    
+  addSong = (event) => {
+    const song = new Song(
+      this.getNewId,
+      this.url.value,
+      this.singer.value,
+      this.title.value,
+      this.genre.value
+    );
+    this.url.value = "";
+    this.singer.value = "";
+    this.title.value = "";
+    this.genre.value = "";
+    this.playerRender.inputSubmitElement.disabled = true;
+
     this.album.addSongs(song);
     this.playerRender.renderSongListElement(this.album);
-  }
-  
+  };
+
   sortSongs() {
     this.album.sortSongs();
     this.playerRender.renderSongListElement(this.album);
   }
-  
+
   deleteSong(id) {
     this.album.deleteSong(id);
     this.playerRender.renderSongListElement(this.album);
   }
 
-  
   getNewId() {
     return this.library.books.length > 0
-    ? Math.max(...this.album.song.map((spng) => song.id)) + 1
-    : 0;
+      ? Math.max(...this.album.song.map((spng) => song.id)) + 1
+      : 0;
   }
 }
 

@@ -33,5 +33,4 @@ const songsObj = songsList.map((s) => {
 const album = new Player("Chingiz Playlist", songsObj);
 const player = new PlayerComponent(entryPoint, album);
 setTimeout(()=>player.sortSongs(), 4000);
-setTimeout(()=>player.changeTitle('SiMpLe dImPlE'),1000);
 
