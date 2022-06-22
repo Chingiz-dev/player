@@ -1,5 +1,6 @@
 @import url(./modules/player/player.css);
 @import url(./modules/song/song.css);
+@import url(./modules/musicPlayer/musicPlayer.css);
 
 *{
   box-sizing: border-box;

@@ -1,76 +1,40 @@
 [
   {
     "id": 1,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "killing me softly",
-    "singer": "fugees",
+    "url": "../mp3/no-coke.mp3",
+    "title": "no coke",
+    "singer": "Dr. Alban",
     "genre": "rap",
     "favorite": true,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
     "id": 2,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "score",
-    "singer": "fugees",
+    "url": "../mp3/riders-on.mp3",
+    "title": "Riders on the storm",
+    "singer": "Snoop Dogg feat. Doors",
     "genre": "rap",
     "favorite": false,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
     "id": 3,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "come as you are",
-    "singer": "nirvana",
+    "url": "../mp3/Bad Guy.mp3",
+    "title": "Bad guy",
+    "singer": "Billie Eilish",
     "genre": "rock",
     "favorite": false,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
     "id": 4,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "battery",
-    "singer": "metallica",
-    "genre": "heavy metal",
+    "url": "../mp3/america.mp3",
+    "title": "This is America",
+    "singer": "Childish Gambino",
+    "genre": "rap",
     "favorite": true,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 5,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "master of puppets",
-    "singer": "metallica",
-    "genre": "heavy metal",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 6,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "come as you are",
-    "singer": "nirvana",
-    "genre": "rock",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 7,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "battery",
-    "singer": "metallica",
-    "genre": "heavy metal",
-    "favorite": true,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 8,
-    "url": "https://www.youtube.com/watch?v=xnKhsTXoKCI",
-    "title": "tequila song",
-    "singer": "the champs",
-    "genre": "jazz",
-    "favorite": false,
     "date": "2022-06-13T10:20:03.896Z",
     "duration": 220,
-    "desc": "tequilla one word song"
+    "desc": "my favorite"
   }
 ]

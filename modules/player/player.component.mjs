@@ -1,9 +1,15 @@
-import PlayerRender from "./player.render.mjs";
+import appRender from "./player.render.mjs";
 import DetailedSong from "./models/detailedSong.mjs";
 import Song from "./models/song.mjs";
+import MusicPlayerComponent from "../musicPlayer/musicPlayer.component.mjs";
+// import renderSong from "../song/song.render.mjs";
 
 class PlayerComponent {
-  playerRender;
+  appRender;
+  
+  musicPlayer;
+  entryNodeMusicPlayer;
+
   album;
   title;
   singer;
@@ -11,18 +17,23 @@ class PlayerComponent {
   url;
 
   constructor(entryPoint, album) {
-    this.playerRender = new PlayerRender();
+    this.appRender = new appRender();
     this.album = album;
-    this.playerRender.render(entryPoint, this.album, ["some"]);
+    this.appRender.render(entryPoint, this.album, ["some"]);
 
-    this.title = this.playerRender.inputTitleElement;
-    this.singer = this.playerRender.inputSingerElement;
-    this.genre = this.playerRender.inputGenreElement;
-    this.url = this.playerRender.inputURLElement;
+    this.entryNodeMusicPlayer = this.appRender.playSongHTMLElement;
+    this.musicPlayer = new MusicPlayerComponent(this.entryNodeMusicPlayer, this.album.playlist);
 
-    this.playerRender.inputListTitleElement.addEventListener("change", this.changeTitle);
+    this.title = this.appRender.inputTitleElement;
+    this.singer = this.appRender.inputSingerElement;
+    this.genre = this.appRender.inputGenreElement;
+    this.url = this.appRender.inputURLElement;
 
-    this.playerRender.inputSubmitElement.addEventListener(
+    this.appRender.inputListTitleElement.addEventListener(
+      "change",
+      this.changeTitle
+    );
+    this.appRender.inputSubmitElement.addEventListener(
       "click",
       this.addSong
     );
@@ -31,23 +42,25 @@ class PlayerComponent {
     this.genre.addEventListener("change", this.changeInputs);
     this.url.addEventListener("change", this.changeInputs);
 
-
-    this.playerRender.songListHTMLElement.addEventListener(
-      "click",
-      (event) => {
-        const currentID = Number(event.target.getAttribute("data-id"));
-        if (currentID !== null) {
-          this.deleteSong(currentID);
-        }
+    this.appRender.songListHTMLElement.addEventListener("click", (event) => {
+      const delID = Number(event.target.getAttribute("data-del-id"));
+      const favID = Number(event.target.getAttribute("data-fav-id"));
+      if (delID !== 0) {
+        this.deleteSong(delID);
       }
-    );
+      if (favID !== 0) {
+        this.toggleFavoriteSong(favID);
+      }
+    });
   }
 
   changeTitle = () => {
-    this.album.name = this.playerRender.inputListTitleElement;
-    this.playerRender.renderTitleElement(this.playerRender.inputListTitleElement.value);
-    this.playerRender.inputListTitleElement.value = "";
-  }
+    this.album.name = this.appRender.inputListTitleElement;
+    this.appRender.renderTitleElement(
+      this.appRender.inputListTitleElement.value
+    );
+    this.appRender.inputListTitleElement.value = "";
+  };
 
   changeInputs = (e) => {
     if (
@@ -56,7 +69,7 @@ class PlayerComponent {
       !!this.title.value &&
       !!this.genre.value
     ) {
-      this.playerRender.inputSubmitElement.disabled = false;
+      this.appRender.inputSubmitElement.disabled = false;
     }
   };
 
@@ -72,26 +85,31 @@ class PlayerComponent {
     this.singer.value = "";
     this.title.value = "";
     this.genre.value = "";
-    this.playerRender.inputSubmitElement.disabled = true;
+    this.appRender.inputSubmitElement.disabled = true;
 
     this.album.addSongs(song);
-    this.playerRender.renderSongListElement(this.album);
+    this.appRender.renderSongListElement(this.album);
   };
 
   sortSongs() {
     this.album.sortSongs();
-    this.playerRender.renderSongListElement(this.album);
+    this.appRender.renderSongListElement(this.album);
   }
 
   deleteSong(id) {
     this.album.deleteSong(id);
-    this.playerRender.renderSongListElement(this.album);
+    this.appRender.renderSongListElement(this.album);
+  }
+
+  toggleFavoriteSong(id) {
+    this.album.toggleFavorite(id);
+    this.appRender.renderSongListElement(this.album);
   }
 
   getNewId() {
     return this.album.playlist.length > 0
       ? Math.max(...this.album.playlist.map((song) => song.id)) + 1
-      : 0;
+      : 1;
   }
 }
 

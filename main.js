@@ -1,5 +1,5 @@
 import PlayerComponent from "./modules/player/player.component.mjs";
-import Player from "./modules/player/models/player.mjs";
+import Playlist from "./modules/player/models/playlist.mjs";
 import songsList from "../../db.json" assert { type: "json" };
 import DetailedSong from "./modules/player/models/detailedSong.mjs";
 import Song from "./modules/player/models/song.mjs";
@@ -30,7 +30,7 @@ const songsObj = songsList.map((s) => {
       );
 });
 
-const album = new Player("Chingiz Playlist", songsObj);
+const album = new Playlist("Chingiz Playlist", songsObj);
 const player = new PlayerComponent(entryPoint, album);
-setTimeout(()=>player.sortSongs(), 4000);
+// setTimeout(()=>player.sortSongs(), 4000);
 

@@ -1,7 +1,7 @@
 import CoreRender from "../CoreRender.mjs";
 
 class PlayerRender extends CoreRender {
-  containerHTMLElement;
+  playSongHTMLElement;
   titleHTMLElement;
   inputListTitleElement;
   playerHTMLElement;
@@ -20,7 +20,6 @@ class PlayerRender extends CoreRender {
   inputGenreElement;
   inputURLElement;
   inputSubmitElement;
-  
 
   getControlsHTMLElements() {
     this.inputControlsElement = this.createElement("div", ["player__controls"]);
@@ -59,15 +58,18 @@ class PlayerRender extends CoreRender {
       this.inputGenreElement,
       this.inputURLElement,
       this.inputSubmitElement
-    );    
+    );
     return this.inputControlsElement;
   }
 
   getSongElement(song) {
     const songHTMLElement = this.createElement("div", ["player__song"]);
-    const songHTMLDeleteElement = this.createElement("div", ["player__song__delete"]);
-    songHTMLDeleteElement.setAttribute('data-id', song.id);
-    songHTMLDeleteElement.innerHTML = "X";
+    const songHTMLDeleteElement = this.createElement("div", ["song__delete"]);
+    songHTMLDeleteElement.innerHTML = " <(delete)>";
+    songHTMLDeleteElement.setAttribute('data-del-id', song.id);
+    const songFavoriteHTMLElement = this.createElement('div', ["song__fav"]);
+    songFavoriteHTMLElement.innerHTML = !!song.favorite ? "<(hate)>" : " <(like)>";
+    songFavoriteHTMLElement.setAttribute('data-fav-id', song.id);
     const titleHTMLelement = this.createElement(
       "div",
       ["song__title"],
@@ -85,9 +87,10 @@ class PlayerRender extends CoreRender {
     );
     songHTMLElement.append(
       songHTMLDeleteElement,
+      songFavoriteHTMLElement,
       titleHTMLelement,
       singerHTMLelement,
-      genreHTMLelement
+      genreHTMLelement,
     );
     if (!!song.desc) {
       const lyricsHTMLelement = this.createElement(
@@ -110,7 +113,7 @@ class PlayerRender extends CoreRender {
     ]);
     const songHTMLElements = this.getsongElements(player);
     songHTMLElements.forEach((element) =>
-    this.songListHTMLElement.appendChild(element)
+      this.songListHTMLElement.appendChild(element)
     );
     return this.songListHTMLElement;
   }
@@ -119,7 +122,7 @@ class PlayerRender extends CoreRender {
     this.songListHTMLElement.innerHTML = "";
     const songHTMLElements = this.getsongElements(player);
     songHTMLElements.forEach((element) =>
-    this.songListHTMLElement.appendChild(element)
+      this.songListHTMLElement.appendChild(element)
     );
     console.log('render playlist');
   }
@@ -132,7 +135,7 @@ class PlayerRender extends CoreRender {
     );
   }
 
-  getTitleInputElement(){    
+  getTitleInputElement() {
     this.inputListTitleElement = this.createElement(
       "input",
       ["song__input"]
@@ -140,27 +143,25 @@ class PlayerRender extends CoreRender {
     this.inputListTitleElement.placeholder = "change playlist name";
     return this.inputListTitleElement;
   }
-  
+
   renderTitleElement(title) {
     this.titleHTMLElement.innerHTML = `<em>${title}</em>`;
-    console.log('render title');
   }
 
   render(node, player, classList = []) {
     node.innerHTML = "";
-
     this.playerHTMLElement = this.createElement("div", [
       "player",
       ...classList,
     ]);
-
-    this.playerHTMLElement.appendChild(this.getControlsHTMLElements());
+    this.playSongHTMLElement = this.createElement("div", ["music__player"]);
     this.playerHTMLElement.appendChild(this.getTitleElement(player));
     this.playerHTMLElement.appendChild(this.getTitleInputElement());
+    this.playerHTMLElement.appendChild(this.getControlsHTMLElements());
+    this.playerHTMLElement.appendChild(this.playSongHTMLElement);
     this.playerHTMLElement.appendChild(this.getSongListElement(player));
 
     node.appendChild(this.playerHTMLElement);
-    console.log('rendering');
   }
 }
 

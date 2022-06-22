@@ -1,0 +1,51 @@
+
+.music-player {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: azure;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sliders__slider-container {
+  display: flex;
+  margin: 5px 0px;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.slider--duration {
+  width: 200px;
+}
+
+.slider--volume {
+  width: 100px;
+}
+
+.slider {
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.buttons__button {
+  cursor: pointer;
+}
+
+.fa-shuffle--active,
+.fa-repeat--active {
+  color: blue;
+}
