@@ -2,7 +2,6 @@ import appRender from "./player.render.mjs";
 import DetailedSong from "./models/detailedSong.mjs";
 import Song from "./models/song.mjs";
 import MusicPlayerComponent from "../musicPlayer/musicPlayer.component.mjs";
-// import renderSong from "../song/song.render.mjs";
 
 class PlayerComponent {
   appRender;
@@ -38,6 +37,10 @@ class PlayerComponent {
     this.appRender.inputSubmitElement.addEventListener(
       "click",
       this.addSong
+    );    
+    this.appRender.playFavoriteOnlyHTMLElement.addEventListener(
+      "click",
+      this.playFavorite
     );
     this.title.addEventListener("change", this.changeInputs);
     this.singer.addEventListener("change", this.changeInputs);
@@ -102,14 +105,16 @@ class PlayerComponent {
     this.appRender.renderSongListElement(this.album);
   }
 
+  playFavorite=() => {
+    this.musicPlayer.updatePlayList(this.album.getFavoriteSongs());
+  }
+
   deleteSong(id) {
     this.album.deleteSong(id);
     this.appRender.renderSongListElement(this.album);
     this.musicPlayer.updatePlayList(this.album.playlist);
-
-    // not implemented for the moment
-    // this.myStore.clearStore();
-    // this.myStore.putToStore(JSON.stringify(this.album.playlist));
+    this.myStore.clearStore();
+    this.myStore.putToStore(JSON.stringify(this.album.playlist));
   }
 
   toggleFavoriteSong(id) {

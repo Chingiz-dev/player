@@ -2,6 +2,7 @@ import CoreRender from "../CoreRender.mjs";
 
 class PlayerRender extends CoreRender {
   playSongHTMLElement;
+  playFavoriteOnlyHTMLElement;
   titleHTMLElement;
   inputListTitleElement;
   playerHTMLElement;
@@ -156,10 +157,13 @@ class PlayerRender extends CoreRender {
       ...classList,
     ]);
     this.playSongHTMLElement = this.createElement("div", ["music__player"]);
+    this.playFavoriteOnlyHTMLElement = this.createElement("button", ["button__favorite"]);
+    this.playFavoriteOnlyHTMLElement.innerHTML = "Play only Favorite";
     this.playerHTMLElement.appendChild(this.getTitleElement(player));
     this.playerHTMLElement.appendChild(this.getTitleInputElement());
     this.playerHTMLElement.appendChild(this.getControlsHTMLElements());
     this.playerHTMLElement.appendChild(this.playSongHTMLElement);
+    this.playerHTMLElement.appendChild(this.playFavoriteOnlyHTMLElement);
     this.playerHTMLElement.appendChild(this.getSongListElement(player));
 
     node.appendChild(this.playerHTMLElement);

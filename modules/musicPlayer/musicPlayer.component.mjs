@@ -35,18 +35,20 @@ class MusicPlayerComponent {
 
   updatePlayList(playList) {
     this.playList = playList;
-    this.loadTrack('0');
+    this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    this.isPlaying = false;
+    this.loadTrack(0);
   }
 
   loadTrack(kIndex) {
     clearInterval(this.updateTimer);
     this.reset();
 
-    this.currentTrack.src = this.playList[kIndex].url;
+    this.currentTrack.src = this.playList[kIndex]?.url;
     this.currentTrack.load();
 
-    this.MRender.trackName.textContent = this.playList[kIndex].title;
-    this.MRender.artistName.textContent = this.playList[kIndex].singer;
+    this.MRender.trackName.textContent = this.playList[kIndex]?.title;
+    this.MRender.artistName.textContent = this.playList[kIndex]?.singer;
 
     this.updateTimer = setInterval(this.setUpdate, 500);
 
