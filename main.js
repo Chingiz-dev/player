@@ -1,17 +1,20 @@
 import PlayerComponent from "./modules/player/player.component.mjs";
 import Playlist from "./modules/player/models/playlist.mjs";
-import songsList from "../../db.json" assert { type: "json" };
+// import songsList from "../../db.json" assert { type: "json" };
 import DetailedSong from "./modules/player/models/detailedSong.mjs";
 import Song from "./modules/player/models/song.mjs";
 import Store from "./modules/Store.mjs";
 
 const myStore = new Store('playlist');
-myStore.putToStore(songsList);
-
+// myStore.putToStore(JSON.stringify(songsList));
+// myStore.clearStore();
+const songsList1 = JSON.parse(myStore.getFromStore());
+// console.log(songsList1);
+// console.log(songsList);
 
 const entryPoint = document.querySelector(".root");
 
-const songsObj = songsList.map((s) => {
+const songsObj = songsList1.map((s) => {
   return s.duration
     ? new DetailedSong(
         s.duration,
