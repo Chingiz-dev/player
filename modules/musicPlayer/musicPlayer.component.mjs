@@ -33,6 +33,11 @@ class MusicPlayerComponent {
     this.loadTrack(this.trackIndex);
   }
 
+  updatePlayList() {
+    this.playList = playList;
+    this.loadTrack(0);
+  }
+
   loadTrack(kIndex) {
     clearInterval(this.updateTimer);
     this.reset();
