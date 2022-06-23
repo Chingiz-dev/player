@@ -3,6 +3,11 @@ import Playlist from "./modules/player/models/playlist.mjs";
 import songsList from "../../db.json" assert { type: "json" };
 import DetailedSong from "./modules/player/models/detailedSong.mjs";
 import Song from "./modules/player/models/song.mjs";
+import Store from "./modules/Store.mjs";
+
+const myStore = new Store('playlist');
+myStore.putToStore(songsList);
+
 
 const entryPoint = document.querySelector(".root");
 
