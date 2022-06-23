@@ -6,6 +6,7 @@ import MusicPlayerComponent from "../musicPlayer/musicPlayer.component.mjs";
 
 class PlayerComponent {
   appRender;
+  myStore;
   
   musicPlayer;
   entryNodeMusicPlayer;
@@ -16,7 +17,8 @@ class PlayerComponent {
   genre;
   url;
 
-  constructor(entryPoint, album) {
+  constructor(entryPoint, album, myStore) {
+    this.myStore = myStore;
     this.appRender = new appRender();
     this.album = album;
     this.appRender.render(entryPoint, this.album, ["some"]);
@@ -88,6 +90,8 @@ class PlayerComponent {
     this.appRender.inputSubmitElement.disabled = true;
 
     this.album.addSongs(song);
+    this.myStore.clearStore();
+    this.myStore.putToStore(JSON.stringify(this.album.playlist));
     this.musicPlayer.updatePlayList(this.album.playlist);
     this.appRender.renderSongListElement(this.album);
   };

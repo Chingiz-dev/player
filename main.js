@@ -39,6 +39,6 @@ const songsObj = songsList1.map((s) => {
 });
 
 const album = new Playlist("Chingiz Playlist", songsObj);
-const player = new PlayerComponent(entryPoint, album);
+const player = new PlayerComponent(entryPoint, album, myStore);
 // setTimeout(()=>player.sortSongs(), 4000);
 
