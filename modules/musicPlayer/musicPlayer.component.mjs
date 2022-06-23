@@ -1,8 +1,10 @@
 import MusicPlayerRender from "./musicPlayer.render.mjs";
+import Observable from "../observable.mjs";
 
 class MusicPlayerComponent {
   MRender;
   playList;
+  playList$;
   currentTrack;
 
   time = "00:00";
@@ -15,7 +17,7 @@ class MusicPlayerComponent {
 
   constructor(musicPoint, playList) {
     this.MRender = new MusicPlayerRender();
-    this.playList = playList;
+    
     this.MRender.render(musicPoint);
     this.MRender.durationSlider.addEventListener("change", this.goTo);
     this.MRender.volumeSlider.addEventListener("change", this.setVolume);
@@ -24,31 +26,37 @@ class MusicPlayerComponent {
     this.MRender.prevTrackBtn.addEventListener("click", this.prevTrack);
     this.MRender.nextTrackBtn.addEventListener("click", this.nextTrack);
     this.MRender.repeatTrackBtn.addEventListener("click", this.repeatTrack);
-
+    
     this.MRender.currentTime.textContent = this.time;
     this.MRender.totalDuration.textContent = this.time;
     this.currentTrack = document.createElement("audio");
-
+    
+    this.playList = playList;
+    this.playList$ = new Observable(this.playList);
+    this.playList$.subscribe(1, this.loadTrack);
+    this.playList$.next(this.playList);
     this.currentTrack.volume = 0.5;
-    this.loadTrack(this.trackIndex);
+    // this.loadTrack();
   }
 
   updatePlayList(playList) {
     this.playList = playList;
+    this.playList$.next(this.playList);
     this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     this.isPlaying = false;
-    this.loadTrack(0);
+    this.trackIndex = 0;
+    // this.loadTrack();
   }
 
-  loadTrack(kIndex) {
+  loadTrack = () => {
     clearInterval(this.updateTimer);
     this.reset();
-
-    this.currentTrack.src = this.playList[kIndex]?.url;
+    let t = this.trackIndex;
+    this.currentTrack.src = this.playList[t]?.url;
     this.currentTrack.load();
 
-    this.MRender.trackName.textContent = this.playList[kIndex]?.title;
-    this.MRender.artistName.textContent = this.playList[kIndex]?.singer;
+    this.MRender.trackName.textContent = this.playList[t]?.title;
+    this.MRender.artistName.textContent = this.playList[t]?.singer;
 
     this.updateTimer = setInterval(this.setUpdate, 500);
 
@@ -115,7 +123,7 @@ class MusicPlayerComponent {
       this.trackIndex = 0;
     }
 
-    this.loadTrack(this.trackIndex);
+    this.loadTrack();
     this.playTrack();
   }
 
@@ -135,7 +143,7 @@ class MusicPlayerComponent {
       this.trackIndex = 0;
     }
 
-    this.loadTrack(this.trackIndex);
+    this.loadTrack();
     this.playTrack();
   }
 
@@ -145,7 +153,7 @@ class MusicPlayerComponent {
     } else {
       this.trackIndex = this.playList.length - 1;
     }
-    this.loadTrack(this.trackIndex);
+    this.loadTrack();
     this.playTrack();
   }
 
@@ -188,7 +196,6 @@ class MusicPlayerComponent {
       this.MRender.currentTime.textContent = currentMinutes + ":" + currentSeconds;
       this.MRender.totalDuration.textContent = durationMinutes + ":" + durationSeconds;
     }
-
   }
 }
 export default MusicPlayerComponent;
