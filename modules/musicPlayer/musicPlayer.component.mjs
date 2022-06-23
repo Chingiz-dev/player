@@ -33,7 +33,7 @@ class MusicPlayerComponent {
     this.loadTrack(this.trackIndex);
   }
 
-  updatePlayList() {
+  updatePlayList(playlist) {
     this.playList = playList;
     this.loadTrack(0);
   }
