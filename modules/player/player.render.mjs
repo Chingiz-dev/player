@@ -69,6 +69,7 @@ class PlayerRender extends CoreRender {
     songHTMLDeleteElement.setAttribute('data-del-id', song.id);
     const songFavoriteHTMLElement = this.createElement('div', ["song__fav"]);
     songFavoriteHTMLElement.innerHTML = !!song.favorite ? "<(hate)>" : " <(like)>";
+    songFavoriteHTMLElement.classList.add(!!song.favorite ? "song__like" : "no");
     songFavoriteHTMLElement.setAttribute('data-fav-id', song.id);
     const titleHTMLelement = this.createElement(
       "div",

@@ -22,3 +22,7 @@
   border: 1px solid gold;
   border-radius: 5px;
 }
+
+.song__like {
+  color: blue;
+}
