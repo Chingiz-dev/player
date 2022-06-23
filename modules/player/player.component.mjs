@@ -98,17 +98,25 @@ class PlayerComponent {
 
   sortSongs() {
     this.album.sortSongs();
+    this.musicPlayer.updatePlayList(this.album.playlist);
     this.appRender.renderSongListElement(this.album);
   }
 
   deleteSong(id) {
     this.album.deleteSong(id);
     this.appRender.renderSongListElement(this.album);
+    this.musicPlayer.updatePlayList(this.album.playlist);
+
+    // not implemented for the moment
+    // this.myStore.clearStore();
+    // this.myStore.putToStore(JSON.stringify(this.album.playlist));
   }
 
   toggleFavoriteSong(id) {
     this.album.toggleFavorite(id);
     this.appRender.renderSongListElement(this.album);
+    this.myStore.clearStore();
+    this.myStore.putToStore(JSON.stringify(this.album.playlist));
   }
 
   getNewId() {
