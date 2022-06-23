@@ -88,6 +88,7 @@ class PlayerComponent {
     this.appRender.inputSubmitElement.disabled = true;
 
     this.album.addSongs(song);
+    this.musicPlayer.updatePlayList(this.album.playlist);
     this.appRender.renderSongListElement(this.album);
   };
 

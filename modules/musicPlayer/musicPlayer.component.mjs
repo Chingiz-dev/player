@@ -33,9 +33,9 @@ class MusicPlayerComponent {
     this.loadTrack(this.trackIndex);
   }
 
-  updatePlayList(playlist) {
+  updatePlayList(playList) {
     this.playList = playList;
-    this.loadTrack(0);
+    this.loadTrack('0');
   }
 
   loadTrack(kIndex) {
