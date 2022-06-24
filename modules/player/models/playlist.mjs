@@ -1,9 +1,6 @@
-class Player {
-  //ex Album
-  // #region fields
+class Playlist {
   name = "my playlist"
   playlist = [];
-  // #endregion fields
 
   constructor(name, songs) {
     this.name = name;
@@ -27,10 +24,11 @@ class Player {
       );
     }
   }
-
-  showPlaylist() {
-    console.log(this.playlist);
-  }
+  
+  toggleFavorite(id){
+    let objIndex = this.playlist.findIndex((obj => obj.id == id));
+    this.playlist[objIndex].favorite = !this.playlist[objIndex].favorite;
+  };
 
   getFavoriteSongs() {
     return this.playlist.filter((song) => song.favorite);
@@ -53,9 +51,6 @@ class Player {
     this.playlist.push(...songs);
   }
 
-  playplaylist() {
-    this.playlist.forEach((song) => song.playSong());
-  }
 }
 
-export default Player;
+export default Playlist;

@@ -1,68 +1,65 @@
 [
   {
     "id": 1,
-    "title": "killing me softly",
-    "singer": "fugees",
+    "url": "https://cdn1.sefon.pro/prev/XhsZS2VRFIkKJIyeDCBP4Q/1656119352/71/Dr.%20Alban%20-%20No%20Coke%20%28Old%29%20%28192kbps%29.mp3",
+    "title": "no coke",
+    "singer": "Dr. Alban",
     "genre": "rap",
     "favorite": true,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
     "id": 2,
-    "title": "score",
-    "singer": "fugees",
+    "url": "https://cdn8.sefon.pro/prev/a1nfIWvbYXLoLMKj09Fh_g/1656119479/290/Snoop%20Dog%20-%20Riders%20On%20The%20Storm%20%28192kbps%29.mp3",
+    "title": "Riders on the storm",
+    "singer": "Snoop Dogg feat. Doors",
     "genre": "rap",
     "favorite": false,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
-    "id": 4,
-    "title": "come as you are",
-    "singer": "nirvana",
-    "genre": "rock",
+    "id": 3,
+    "url": "https://cdn1.sefon.pro/prev/0gkWLdrTLLbZu_ctIAaSNQ/1656119844/22/Stromae%20-%20Formidable%20%28192kbps%29.mp3",
+    "title": "Formidable",
+    "singer": "Stromae",
+    "genre": "dance",
     "favorite": false,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
+    "id": 4,
+    "url": "https://cdn6.sefon.pro/prev/jePjWihQKR3Dvm2hcHInyg/1656120029/37/Eminem%20feat.%20Rihanna%20-%20The%20Monster%20%28192kbps%29.mp3",
+    "title": "Monster",
+    "singer": "Rihana",
+    "genre": "r'n'b",
+    "favorite": true,
+    "date": "2022-06-13T10:20:03.896Z"
+  },
+  {
     "id": 5,
-    "title": "battery",
-    "singer": "metallica",
-    "genre": "heavy metal",
+    "url": "https://cdn1.sefon.pro/prev/OhRg9OgaLkWkP6jRDDOx6g/1656118334/217/%D0%A1%D1%83%D0%BB%D1%82%D0%B0%D0%BD%20%D0%9B%D0%B0%D0%B3%D1%83%D1%87%D0%B5%D0%B2%20-%20%D0%93%D0%BE%D1%80%D1%8C%D0%BA%D0%B8%D0%B9%20%D0%92%D0%BA%D1%83%D1%81%20%28192kbps%29.mp3",
+    "title": "Горький вкус",
+    "singer": "Султан Лагучев",
+    "genre": "лирика",
     "favorite": true,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
     "id": 6,
-    "title": "master of puppets",
-    "singer": "metallica",
-    "genre": "heavy metal",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 7,
-    "title": "come as you are",
-    "singer": "nirvana",
-    "genre": "rock",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z"
-  },
-  {
-    "id": 8,
-    "title": "battery",
-    "singer": "metallica",
-    "genre": "heavy metal",
+    "url": "https://cdn8.sefon.pro/prev/qTf7cqARW-cNgobdPR7mxw/1656120260/175/Black%20Eyed%20Peas%20feat.%20Ozuna%20%26%20J.%20Rey%20Soul%20-%20Mamacita%20%28192kbps%29.mp3",
+    "title": "Mamacita",
+    "singer": "Black Eyed Peas",
+    "genre": "club",
     "favorite": true,
     "date": "2022-06-13T10:20:03.896Z"
   },
   {
-    "id": 8,
-    "title": "tequila song",
-    "singer": "the champs",
-    "genre": "jazz",
-    "favorite": false,
-    "date": "2022-06-13T10:20:03.896Z",
-    "duration": 220,
-    "lyrics": "tequilla"
+    "id": 7,
+    "url": "https://cdn9.sefon.pro/prev/NEORO8GjXu2wbr6uKVdBWQ/1656120355/1/Metallica%20-%20Enter%20Sandman%20%28192kbps%29.mp3",
+    "title": "Enter Sandman",
+    "singer": "Metallica",
+    "genre": "metal",
+    "favorite": true,
+    "date": "2022-06-13T10:20:03.896Z"
   }
 ]

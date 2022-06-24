@@ -1,4 +1,6 @@
 @import url(./modules/player/player.css);
+@import url(./modules/song/song.css);
+@import url(./modules/musicPlayer/musicPlayer.css);
 
 *{
   box-sizing: border-box;
@@ -18,7 +20,7 @@ a,a:hover,a:link{
 
 .root {
 	min-width: 600px;
-	max-width: 1000px;
+	max-width: 1200px;
 	background-color: brown;
 	padding: 20px;
 	border: 2px solid white;
