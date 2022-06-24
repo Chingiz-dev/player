@@ -36,16 +36,26 @@ class MusicPlayerComponent {
     this.playList$.subscribe(1, this.loadTrack);
     this.playList$.next(this.playList);
     this.currentTrack.volume = 0.5;
+    // use observable
     // this.loadTrack();
   }
-
+  
   updatePlayList(playList) {
     this.playList = playList;
     this.playList$.next(this.playList);
     this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     this.isPlaying = false;
     this.trackIndex = 0;
+    // use observable
     // this.loadTrack();
+  }
+
+  playFromPlayList(songID) {
+    this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    this.isPlaying = false;
+    this.trackIndex = this.playList.findIndex(item => item.id === songID);
+    this.loadTrack();
+    this.playTrack();
   }
 
   loadTrack = () => {

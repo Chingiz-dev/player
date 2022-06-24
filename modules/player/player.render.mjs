@@ -65,11 +65,18 @@ class PlayerRender extends CoreRender {
 
   getSongElement(song) {
     const songHTMLElement = this.createElement("div", ["player__song"]);
+
     const songHTMLDeleteElement = this.createElement("i", ["song__delete", "fa-solid", "fa-times"]);
     songHTMLDeleteElement.setAttribute('data-del-id', song.id);
+
     const songFavoriteHTMLElement = this.createElement('i', ["song__fav", "fa-solid"]);
     songFavoriteHTMLElement.classList.add(!!song.favorite ? "fa-thumbs-up" : "fa-thumbs-down");
     songFavoriteHTMLElement.setAttribute('data-fav-id', song.id);
+
+
+    const songHTMLPlayElement = this.createElement("i", ["fa-solid", "fa-play"]);
+    songHTMLPlayElement.setAttribute('data-play-id', song.id);
+
     const titleHTMLelement = this.createElement(
       "div",
       ["song__title"],
@@ -88,6 +95,7 @@ class PlayerRender extends CoreRender {
     songHTMLElement.append(
       songHTMLDeleteElement,
       songFavoriteHTMLElement,
+      songHTMLPlayElement,
       titleHTMLelement,
       singerHTMLelement,
       genreHTMLelement,

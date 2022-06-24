@@ -50,6 +50,10 @@ class PlayerComponent {
     this.appRender.songListHTMLElement.addEventListener("click", (event) => {
       const delID = Number(event.target.getAttribute("data-del-id"));
       const favID = Number(event.target.getAttribute("data-fav-id"));
+      const playID = Number(event.target.getAttribute("data-play-id"));
+      if (playID !== 0) {
+        this.playFromPlaylistPoint(playID);
+      }
       if (delID !== 0) {
         this.deleteSong(delID);
       }
@@ -107,6 +111,10 @@ class PlayerComponent {
 
   playFavorite=() => {
     this.musicPlayer.updatePlayList(this.album.getFavoriteSongs());
+  }
+
+  playFromPlaylistPoint = (id) => {
+    this.musicPlayer.playFromPlayList(id);
   }
 
   deleteSong(id) {
