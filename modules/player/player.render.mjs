@@ -65,8 +65,10 @@ class PlayerRender extends CoreRender {
 
   getSongElement(song) {
     const songHTMLElement = this.createElement("div", ["player__song"]);
-    const songHTMLDeleteElement = this.createElement("div", ["song__delete"]);
-    songHTMLDeleteElement.innerHTML = " <(delete)>";
+    const songHTMLDeleteElement = this.createElement("div", ["song__delete","fa-solid", "fa-times"]);
+    // const delI = this.createElement("i", ["fa-solid", "fa-times"]);
+    // songHTMLDeleteElement.appendChild(delI);
+    // songHTMLDeleteElement.innerHTML = " <(delete)>";
     songHTMLDeleteElement.setAttribute('data-del-id', song.id);
     const songFavoriteHTMLElement = this.createElement('div', ["song__fav"]);
     songFavoriteHTMLElement.innerHTML = !!song.favorite ? "<(hate)>" : " <(like)>";
@@ -126,7 +128,6 @@ class PlayerRender extends CoreRender {
     songHTMLElements.forEach((element) =>
       this.songListHTMLElement.appendChild(element)
     );
-    console.log('render playlist');
   }
 
   getTitleElement(player) {
