@@ -4,6 +4,7 @@ import songsList from "../../db.json" assert { type: "json" };
 import DetailedSong from "./modules/player/models/detailedSong.mjs";
 import Song from "./modules/player/models/song.mjs";
 import Store from "./modules/Store.mjs";
+import Weather from "./modules/weather/weather.component.mjs";
 
 const myStore = new Store('playlist');
 // myStore.putToStore(JSON.stringify(songsList));
@@ -14,6 +15,7 @@ if (songsList1.length < 1){
 }
 
 const entryPoint = document.querySelector(".root");
+const weatherPoint = document.querySelector(".weath");
 
 const songsObj = songsList1.map((s) => {
   return s.duration
@@ -43,3 +45,5 @@ const album = new Playlist("Chingiz Playlist", songsObj);
 const player = new PlayerComponent(entryPoint, album, myStore);
 // setTimeout(()=>player.sortSongs(), 4000);
 
+const weather = new Weather(weatherPoint);
+weather.getLocation();
