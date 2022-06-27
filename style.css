@@ -1,6 +1,7 @@
 @import url(./modules/player/player.css);
 @import url(./modules/song/song.css);
 @import url(./modules/musicPlayer/musicPlayer.css);
+@import url(./modules/weather/weather.css);
 
 *{
   box-sizing: border-box;
@@ -21,8 +22,8 @@ a,a:hover,a:link{
 .root {
 	min-width: 600px;
 	max-width: 1200px;
-	background-color: brown;
-	padding: 20px;
-	border: 2px solid white;
-	margin: 100px auto;
+	background-color: antiquewhite;
+	padding: 10px;
+	border: 10px solid brown;
+	margin: 10px auto;
 }
