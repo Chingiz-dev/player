@@ -1,0 +1,12 @@
+.weath {  
+	min-width: 600px;
+	max-width: 1200px;
+	background-color: antiquewhite;
+	padding: 10px;
+	border: 10px solid brown;
+	margin: 10px auto;
+}
+
+.weather__info {
+	text-align: center;
+}
