@@ -1,4 +1,4 @@
-import appRender from "./player.render.mjs";
+import AppRender from "./player.render.mjs";
 import DetailedSong from "./models/detailedSong.mjs";
 import Song from "./models/song.mjs";
 import MusicPlayerComponent from "../musicPlayer/musicPlayer.component.mjs";
@@ -18,7 +18,7 @@ class PlayerComponent {
 
   constructor(entryPoint, album, myStore) {
     this.myStore = myStore;
-    this.appRender = new appRender();
+    this.appRender = new AppRender();
     this.album = album;
     this.appRender.render(entryPoint, this.album, ["some"]);
 
