@@ -3,9 +3,15 @@ import Config from '../config.mjs';
 
 
 export default class Weather {
+<<<<<<< HEAD
   latitude;
   longitude;
   APIKey = Config.APIKEY;
+=======
+  Latitude;
+  Longitude;
+  APIKey = "4707c6f9f3798460246fc88412e9b118"; // key not active
+>>>>>>> 612dfc09ac86113218066a4890799a21e4a7abe2
   weatherPoint;
   weatherRender;
 
