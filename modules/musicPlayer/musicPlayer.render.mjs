@@ -16,6 +16,30 @@ class MusicPlayerRender extends CoreRender {
   nextTrackBtn;
   repeatTrackBtn;
 
+  renderPlay() {
+    this.playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+  }
+
+  renderPause() {
+    this.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+  }
+  
+  removeActiveRepeat() {
+    this.repeatTrackBtn.classList.remove("fa-repeat--active");
+  }
+
+  setActiveRepeat() {
+    this.repeatTrackBtn.classList.add("fa-repeat--active");
+  }
+
+  removeActiveShuffle() {
+    this.randomTrackBtn.classList.remove("fa-shuffle--active");
+  }
+
+  setActiveShuffle() {
+    this.randomTrackBtn.classList.add("fa-shuffle--active");
+  }
+
   getSliders() {
     const sliders = this.createElement("div", ["sliders"]);
 

@@ -85,12 +85,12 @@ class MusicPlayerComponent {
 
   playRandom = () => {
     this.isRandom = true;
-    this.MRender.randomTrackBtn.classList.add("fa-shuffle--active");
+    this.MRender.setActiveShuffle();
   }
 
   pauseRandom = () => {
     this.isRandom = false;
-    this.MRender.randomTrackBtn.classList.remove("fa-shuffle--active");
+    this.MRender.removeActiveShuffle();
   }
 
   repeatTrack = () => {
@@ -99,12 +99,12 @@ class MusicPlayerComponent {
 
   playRepeat = () => {
     this.isOnRepeat = true;
-    this.MRender.repeatTrackBtn.classList.add("fa-repeat--active");
+    this.MRender.setActiveRepeat();
   }
 
   pauseRepeat = () => {
     this.isOnRepeat = false;
-    this.MRender.repeatTrackBtn.classList.remove("fa-repeat--active");
+    this.MRender.removeActiveRepeat();
   }
 
   playPauseTrack = () => {
@@ -114,13 +114,13 @@ class MusicPlayerComponent {
   playTrack = () => {
     this.currentTrack.play();
     this.isPlaying = true;
-    this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    this.MRender.renderPlay();
   }
 
   pauseTrack = () => {
     this.currentTrack.pause();
     this.isPlaying = false;
-    this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    this.MRender.renderPause();
   }
 
   nextTrack = () => {
