@@ -10,7 +10,7 @@ const myStore = new Store('playlist');
 // myStore.putToStore(JSON.stringify(songsList));
 // myStore.clearStore();
 let songsList1 = JSON.parse(myStore.getFromStore());
-if (songsList1.length < 1){
+if (!songsList1 || songsList1.length < 1){
   songsList1 = songsList;
 }
 
