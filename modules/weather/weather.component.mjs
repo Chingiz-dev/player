@@ -1,9 +1,11 @@
 import WeatherRender from './weather.render.mjs';
+import Config from '../config.mjs';
+
 
 export default class Weather {
-  Latitude;
-  Longitude;
-  APIKey = "4707c6f9f3798460246fc88412e9b118";
+  latitude;
+  longitude;
+  APIKey = Config.APIKEY;
   weatherPoint;
   weatherRender;
 
@@ -21,9 +23,9 @@ export default class Weather {
   }
 
   fetchWeather = (position) => {
-    this.Latitude = position.coords.latitude;
-    this.Longitude = position.coords.longitude;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.Latitude}&lon=${this.Longitude}&appid=${this.APIKey}`)
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&appid=${this.APIKey}`)
       .then((resp) => { return resp.json() })
       .then((data) => {
         this.weatherRender.render(this.weatherPoint, data);

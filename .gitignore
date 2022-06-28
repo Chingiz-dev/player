@@ -3,3 +3,4 @@ junk
 /node_modules
 package.json
 package-lock.json
+modules/config.mjs
