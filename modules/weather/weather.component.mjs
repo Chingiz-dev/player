@@ -3,7 +3,7 @@ import WeatherRender from './weather.render.mjs';
 export default class Weather {
   Latitude;
   Longitude;
-  APIKey = "4707c6f9f3798460246fc88412e9b118";
+  APIKey = "4707c6f9f3798460246fc88412e9b118"; // key not active
   weatherPoint;
   weatherRender;
 
