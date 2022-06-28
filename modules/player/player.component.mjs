@@ -6,7 +6,7 @@ import MusicPlayerComponent from "../musicPlayer/musicPlayer.component.mjs";
 class PlayerComponent {
   appRender;
   myStore;
-  
+
   musicPlayer;
   entryNodeMusicPlayer;
 
@@ -37,7 +37,7 @@ class PlayerComponent {
     this.appRender.inputSubmitElement.addEventListener(
       "click",
       this.addSong
-    );    
+    );
     this.appRender.playFavoriteOnlyHTMLElement.addEventListener(
       "click",
       this.playFavorite
@@ -71,7 +71,7 @@ class PlayerComponent {
     this.appRender.inputListTitleElement.value = "";
   };
 
-  changeInputs = (e) => {
+  changeInputs = () => {
     if (
       !!this.url.value &&
       !!this.singer.value &&
@@ -109,11 +109,11 @@ class PlayerComponent {
     this.appRender.renderSongListElement(this.album);
   }
 
-  playFavorite=() => {
+  playFavorite = () => {
     this.musicPlayer.updatePlayList(this.album.getFavoriteSongs());
   }
 
-  playFromPlaylistPoint = (id) => {
+  playFromPlaylistPoint(id) {
     this.musicPlayer.playFromPlayList(id);
   }
 
