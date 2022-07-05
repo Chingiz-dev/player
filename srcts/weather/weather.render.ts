@@ -1,7 +1,7 @@
-import CoreRender from "../CoreRender.mjs";
+import CoreRender from "../CoreRender";
 
 class WeatherRender extends CoreRender {
-  render(node, data, classList = []) {
+  render(node: HTMLElement, data: any, classList: string[] = []): void {
     node.innerHTML = "";
     const weatherHTMLElement = this.createElement('div', ["weather__info"]);
     weatherHTMLElement.innerHTML =

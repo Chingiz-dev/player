@@ -4,3 +4,6 @@ junk
 package.json
 package-lock.json
 modules/config.mjs
+srcts/config.ts
+dist/index.js
+dist/index.js.map

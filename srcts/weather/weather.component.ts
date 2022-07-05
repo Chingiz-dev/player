@@ -1,28 +1,27 @@
-import WeatherRender from './weather.render.mjs';
-import Config from '../config.mjs';
+import WeatherRender from './weather.render'
+import Config from '../Config';
 
+export default class WeatherComponent {
+  private latitude: any;
+  private longitude: any;
+  private APIKey: string = Config.APIKEY;
+  weatherPoint: HTMLElement;
+  weatherRender: WeatherRender;
 
-export default class Weather {
-  latitude;
-  longitude;
-  APIKey = Config.APIKEY;
-  weatherPoint;
-  weatherRender;
-
-  constructor(weatherPoint) {
+  constructor(weatherPoint: HTMLElement) {
     this.weatherPoint = weatherPoint;
     this.weatherRender = new WeatherRender();
   }
 
-  getLocation() {
+  public getLocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.fetchWeather);
     } else {
-      x.innerHTML = "Geolocation is not supported by this browser.";
+     console.log("Geolocation is not supported by this browser.");
     }
   }
 
-  fetchWeather = (position) => {
+  private fetchWeather = (position: GeolocationPosition): void => {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&appid=${this.APIKey}`)

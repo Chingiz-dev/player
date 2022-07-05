@@ -1,7 +1,7 @@
 @import url(./modules/player/player.css);
 @import url(./modules/song/song.css);
 @import url(./modules/musicPlayer/musicPlayer.css);
-@import url(./modules/weather/weather.css);
+@import url(./srcts/weather/weather.css);
 
 *{
   box-sizing: border-box;
