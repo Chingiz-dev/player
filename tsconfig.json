@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "system",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "outFile": "dist/index.js",
+    "sourceMap": true,
+    "watch": true
+  },
+  "include": [
+    "./**/*"
+  ]
+}
