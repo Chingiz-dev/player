@@ -1,10 +1,10 @@
-import PlayerComponent from "./modules/player/player.component.mjs";
-import Playlist from "./modules/player/models/playlist.mjs";
+import PlayerComponent from "./player/player.component.mjs";
+import Playlist from "./player/models/playlist.mjs";
 import songsList from "../../db.json" assert { type: "json" };
-import DetailedSong from "./modules/player/models/detailedSong.mjs";
-import Song from "./modules/player/models/song.mjs";
-import Store from "./modules/Store.mjs";
-import Weather from "./modules/weather/weather.component.mjs";
+import DetailedSong from "./player/models/detailedSong.mjs";
+import Song from "./player/models/song.mjs";
+import Store from "./Store.mjs";
+import Weather from "./weather/weather.component.mjs";
 
 const myStore = new Store('playlist');
 // myStore.putToStore(JSON.stringify(songsList));
