@@ -9,6 +9,17 @@ class CoreRender {
     }
     return element;
   }
+
+  protected createInputElement(classList: string[], html: string = ''): HTMLInputElement {
+    const element: HTMLInputElement = document.createElement('input');
+    classList.forEach((className) => {
+      element.classList.add(className);
+    });
+    if (html) {
+      element.innerHTML = html;
+    }
+    return element;
+  }
 }
 
 export default CoreRender;

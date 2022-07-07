@@ -19,7 +19,8 @@ a,a:hover,a:link{
 	text-decoration: none;
 }
 
-.root {
+.root,
+.rootTS {
 	min-width: 600px;
 	max-width: 1200px;
 	background-color: antiquewhite;
