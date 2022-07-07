@@ -3,6 +3,7 @@ import AppRender from "./player.render";
 import Song from "../model/song";
 import Store from "../Store";
 import MusicPlayerComponent from "../musicPlayer/musicPlayer.component";
+import Playlist from "../model/playlist";
 
 class PlayerComponent {
   appRender;
@@ -11,13 +12,13 @@ class PlayerComponent {
   musicPlayer: MusicPlayerComponent;
   entryNodeMusicPlayer: HTMLElement;
 
-  album;
+  album: Playlist;
   title;
   singer;
   genre;
   url;
 
-  constructor(entryPoint: HTMLElement, album: any, myStore: Store) {
+  constructor(entryPoint: HTMLElement, album: Playlist, myStore: Store) {
     this.myStore = myStore;
     this.appRender = new AppRender();
     this.album = album;
@@ -65,7 +66,7 @@ class PlayerComponent {
   }
 
   changeTitle = () => {
-    this.album.name = this.appRender.inputListTitleElement;
+    this.album.name = this.appRender.inputListTitleElement.value;
     this.appRender.renderTitleElement(
       this.appRender.inputListTitleElement.value
     );
@@ -111,11 +112,14 @@ class PlayerComponent {
   }
 
   playFavorite = () => {
-    this.musicPlayer.updatePlayList(this.album.getFavoriteSongs());
+    let favoriteSongs = this.album.getFavoriteSongs();
+    if(favoriteSongs.length > 0){
+      this.musicPlayer.updatePlayList(favoriteSongs);
+    }
   }
 
-  playFromPlaylistPoint(id) {
-    this.musicPlayer.playFromPlayList(id);
+  playFromPlaylistPoint(id: number) {
+    this.musicPlayer.playFromPlayList(id, this.album.playlist);
   }
 
   deleteSong(id) {

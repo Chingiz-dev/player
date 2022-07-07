@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es2015",
         "module": "system",
-        "allowJs": true,
+        // "allowJs": true,
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,

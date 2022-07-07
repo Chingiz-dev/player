@@ -1,6 +1,6 @@
-@import url(./modules/player/player.css);
-@import url(./modules/song/song.css);
-@import url(./modules/musicPlayer/musicPlayer.css);
+@import url(./srcts/player/player.css);
+@import url(./srcts/model/song.css);
+@import url(./srcts/musicPlayer/musicPlayer.css);
 @import url(./srcts/weather/weather.css);
 
 *{

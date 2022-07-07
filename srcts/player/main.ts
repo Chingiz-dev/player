@@ -4,17 +4,9 @@ import Song from "../model/song";
 import Store from "../Store";
 
 const myStore = new Store('playlist');
-// myStore.putToStore(JSON.stringify(songsList));
-// myStore.clearStore();
 let songsList = JSON.parse(myStore.getFromStore());
 
-console.log(songsList);
-// if (!songsList1 || songsList1.length < 1){
-//   songsList1 = songsList;
-// }
-// let curSL = JSON.parse(songsList);
-
-const entryPoint: HTMLElement = document.querySelector(".rootTS");
+const entryPoint: HTMLElement = document.querySelector(".root");
 
 const songsObj: Song[] = songsList.map((s: any) => {
   return new Song(

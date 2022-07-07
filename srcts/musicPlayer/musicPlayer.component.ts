@@ -49,11 +49,13 @@ class MusicPlayerComponent {
     this.trackIndex = 0;
     // use observable
     // this.loadTrack();
+    this.playTrack();
   }
 
-  playFromPlayList(songID: number) {
+  playFromPlayList(songID: number, playList: Song[]) {
     this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     this.isPlaying = false;
+    this.playList = playList;
     this.trackIndex = this.playList.findIndex(item => item.id === songID);
     this.loadTrack();
     this.playTrack();
