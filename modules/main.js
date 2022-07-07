@@ -4,7 +4,6 @@ import songsList from "../../db.json" assert { type: "json" };
 import DetailedSong from "./player/models/detailedSong.mjs";
 import Song from "./player/models/song.mjs";
 import Store from "./Store.mjs";
-import Weather from "./weather/weather.component.mjs";
 
 const myStore = new Store('playlist');
 // myStore.putToStore(JSON.stringify(songsList));
@@ -44,6 +43,3 @@ const songsObj = songsList1.map((s) => {
 const album = new Playlist("Chingiz Playlist", songsObj);
 const player = new PlayerComponent(entryPoint, album, myStore);
 // setTimeout(()=>player.sortSongs(), 4000);
-
-const weather = new Weather(weatherPoint);
-weather.getLocation();
