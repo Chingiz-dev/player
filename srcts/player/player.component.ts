@@ -50,9 +50,10 @@ class PlayerComponent {
     this.url.addEventListener("change", this.changeInputs);
 
     this.appRender.songListHTMLElement.addEventListener("click", (event) => {
-      const delID = Number(event.target.getAttribute("data-del-id"));
-      const favID = Number(event.target.getAttribute("data-fav-id"));
-      const playID = Number(event.target.getAttribute("data-play-id"));
+      let eventElement = event.target as HTMLInputElement;
+      const delID = Number(eventElement.getAttribute("data-del-id"));
+      const favID = Number(eventElement.getAttribute("data-fav-id"));
+      const playID = Number(eventElement.getAttribute("data-play-id"));
       if (playID !== 0) {
         this.playFromPlaylistPoint(playID);
       }
@@ -84,10 +85,11 @@ class PlayerComponent {
     }
   };
 
-  addSong = (event) => {
+  addSong = (): void => {
+    let urlUrl: URL = new URL(this.url.value);
     const song = new Song(
       this.getNewId(),
-      this.url.value,
+      urlUrl,
       this.singer.value,
       this.title.value,
       this.genre.value
@@ -105,13 +107,13 @@ class PlayerComponent {
     this.appRender.renderSongListElement(this.album);
   };
 
-  sortSongs() {
+  sortSongs(): void {
     this.album.sortSongs();
     this.musicPlayer.updatePlayList(this.album.playlist);
     this.appRender.renderSongListElement(this.album);
   }
 
-  playFavorite = () => {
+  playFavorite = (): void => {
     let favoriteSongs = this.album.getFavoriteSongs();
     if(favoriteSongs.length > 0){
       this.musicPlayer.updatePlayList(favoriteSongs);
@@ -122,7 +124,7 @@ class PlayerComponent {
     this.musicPlayer.playFromPlayList(id, this.album.playlist);
   }
 
-  deleteSong(id) {
+  deleteSong(id: number) {
     this.album.deleteSong(id);
     this.appRender.renderSongListElement(this.album);
     this.musicPlayer.updatePlayList(this.album.playlist);
@@ -130,7 +132,7 @@ class PlayerComponent {
     this.myStore.putToStore(JSON.stringify(this.album.playlist));
   }
 
-  toggleFavoriteSong(id) {
+  toggleFavoriteSong(id: number) {
     this.album.toggleFavorite(id);
     this.appRender.renderSongListElement(this.album);
     this.myStore.clearStore();

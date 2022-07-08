@@ -40,9 +40,9 @@ class Playlist {
     return this.playlist.filter((song) => !song.favorite);
   }
 
-  getOneForSinger(): Song[] {
-    return this.playlist.reduce((newplaylist, current) => {
-      if (!newplaylist.some((x) => x.singer === current.singer)) {
+  public getOneForSinger(): Song[] {
+    return this.playlist.reduce((newplaylist: Song[], current) => {
+      if (!newplaylist.some((x: Song) => x.singer === current.singer)) {
         newplaylist.push(current);
       }
       return newplaylist;

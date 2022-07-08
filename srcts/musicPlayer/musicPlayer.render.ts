@@ -1,20 +1,20 @@
 import CoreRender from "../CoreRender";
 
 class MusicPlayerRender extends CoreRender {
-  musicPlayerElement;
+  musicPlayerElement: HTMLElement;
 
-  durationSlider;
-  volumeSlider;
-  currentTime;
-  totalDuration;
-  trackName;
-  artistName;
+  durationSlider: HTMLInputElement;
+  volumeSlider: HTMLInputElement;
+  currentTime: HTMLElement;
+  totalDuration: HTMLElement;
+  trackName: HTMLElement;
+  artistName: HTMLElement;
 
-  randomTrackBtn;
-  prevTrackBtn;
-  playPauseBtn;
-  nextTrackBtn;
-  repeatTrackBtn;
+  randomTrackBtn: HTMLElement;
+  prevTrackBtn: HTMLElement;
+  playPauseBtn: HTMLElement;
+  nextTrackBtn: HTMLElement;
+  repeatTrackBtn: HTMLElement;
 
   renderPlay() {
     this.playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
@@ -46,19 +46,19 @@ class MusicPlayerRender extends CoreRender {
     const sliderContainer1 = this.createElement("div", ["sliders__slider-container"]);
     this.currentTime = this.createElement("span", ["current-time"]);
     this.totalDuration = this.createElement("span", ["total-duration"]);
-    this.durationSlider = this.createElement("input", ["slider--duration"]);
+    this.durationSlider = this.createInputElement(["slider--duration"]);
     this.durationSlider.type = 'range';
-    this.durationSlider.min = 0;
-    this.durationSlider.max = 100;
-    this.durationSlider.value = 0;
+    this.durationSlider.min = "0";
+    this.durationSlider.max = "100";
+    this.durationSlider.value = "0";
     sliderContainer1.append(this.currentTime, this.durationSlider, this.totalDuration);
 
     const sliderContainer2 = this.createElement("div", ["sliders__slider-container"]);
-    this.volumeSlider = this.createElement("input", ["slider--duration"]);
+    this.volumeSlider = this.createInputElement(["slider--duration"]);
     this.volumeSlider.type = 'range';
-    this.volumeSlider.min = 1;
-    this.volumeSlider.max = 100;
-    this.volumeSlider.value = 50;
+    this.volumeSlider.min = "1";
+    this.volumeSlider.max = "100";
+    this.volumeSlider.value = "50";
     const i1 = this.createElement("i", ["fa-solid", "fa-volume-low"]);
     const i2 = this.createElement("i", ["fa-solid", "fa-volume-high"]);
     sliderContainer2.append(i1, this.volumeSlider, i2);

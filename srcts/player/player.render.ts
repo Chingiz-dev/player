@@ -107,7 +107,7 @@ class PlayerRender extends CoreRender {
     return songHTMLElement;
   }
 
-  getsongElements(player: any): HTMLElement {
+  getsongElements(player: any): HTMLElement[] {
     return player.playlist.map((song: Song) => this.getSongElement(song));
   }
 

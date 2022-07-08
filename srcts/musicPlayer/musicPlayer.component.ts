@@ -3,22 +3,22 @@ import Observable from "../observable";
 import Song from "../model/song";
 
 class MusicPlayerComponent {
-  MRender;
+  MRender: MusicPlayerRender;
   playList: Song[];
   playList$: Observable;
-  currentTrack;
+  currentTrack: HTMLAudioElement;
 
-  time = "00:00";
+  time: string = "00:00";
 
-  trackIndex = 0;
-  isPlaying = false;
-  isRandom = false;
-  isOnRepeat = false;
-  updateTimer;
+  trackIndex: number = 0;
+  isPlaying: boolean = false;
+  isRandom: boolean = false;
+  isOnRepeat: boolean = false;
+  updateTimer: any;
 
   constructor(musicPoint: HTMLElement, playList: Song[]) {
     this.MRender = new MusicPlayerRender();
-    
+
     this.MRender.render(musicPoint);
     this.MRender.durationSlider.addEventListener("change", this.goTo);
     this.MRender.volumeSlider.addEventListener("change", this.setVolume);
@@ -27,11 +27,11 @@ class MusicPlayerComponent {
     this.MRender.prevTrackBtn.addEventListener("click", this.prevTrack);
     this.MRender.nextTrackBtn.addEventListener("click", this.nextTrack);
     this.MRender.repeatTrackBtn.addEventListener("click", this.repeatTrack);
-    
+
     this.MRender.currentTime.textContent = this.time;
     this.MRender.totalDuration.textContent = this.time;
     this.currentTrack = document.createElement("audio");
-    
+
     this.playList = playList;
     this.playList$ = new Observable(this.playList);
     this.playList$.subscribe(1, this.loadTrack);
@@ -40,7 +40,7 @@ class MusicPlayerComponent {
     // use observable
     // this.loadTrack();
   }
-  
+
   updatePlayList(playList: any) {
     this.playList = playList;
     this.playList$.next(this.playList);
@@ -56,7 +56,7 @@ class MusicPlayerComponent {
     this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     this.isPlaying = false;
     this.playList = playList;
-    this.trackIndex = this.playList.findIndex(item => item.id === songID);
+    this.trackIndex = this.playList.findIndex((item) => item.id === songID);
     this.loadTrack();
     this.playTrack();
   }
@@ -65,7 +65,7 @@ class MusicPlayerComponent {
     clearInterval(this.updateTimer);
     this.reset();
     let t = this.trackIndex;
-    this.currentTrack.src = this.playList[t]?.url;
+    this.currentTrack.src = this.playList[t]?.url.toString();
     this.currentTrack.load();
 
     this.MRender.trackName.textContent = this.playList[t]?.title;
@@ -74,63 +74,63 @@ class MusicPlayerComponent {
     this.updateTimer = setInterval(this.setUpdate, 500);
 
     this.currentTrack.addEventListener("ended", this.nextTrackIfEnded);
-  }
+  };
 
   reset() {
     this.MRender.currentTime.textContent = this.time;
     this.MRender.totalDuration.textContent = this.time;
-    this.MRender.durationSlider.value = 0;
+    this.MRender.durationSlider.value = "0";
   }
 
   randomTrack = () => {
     this.isRandom ? this.pauseRandom() : this.playRandom();
-  }
+  };
 
   playRandom = () => {
     this.isRandom = true;
     this.MRender.setActiveShuffle();
-  }
+  };
 
   pauseRandom = () => {
     this.isRandom = false;
     this.MRender.removeActiveShuffle();
-  }
+  };
 
   repeatTrack = () => {
     this.isOnRepeat ? this.pauseRepeat() : this.playRepeat();
-  }
+  };
 
   playRepeat = () => {
     this.isOnRepeat = true;
     this.MRender.setActiveRepeat();
-  }
+  };
 
   pauseRepeat = () => {
     this.isOnRepeat = false;
     this.MRender.removeActiveRepeat();
-  }
+  };
 
   playPauseTrack = () => {
     this.isPlaying ? this.pauseTrack() : this.playTrack();
-  }
+  };
 
   playTrack = () => {
     this.currentTrack.play();
     this.isPlaying = true;
     this.MRender.renderPlay();
-  }
+  };
 
   pauseTrack = () => {
     this.currentTrack.pause();
     this.isPlaying = false;
     this.MRender.renderPause();
-  }
+  };
 
   nextTrack = () => {
     if (this.trackIndex < this.playList.length - 1 && !this.isRandom) {
       this.trackIndex += 1;
     } else if (this.trackIndex < this.playList.length - 1 && this.isRandom) {
-      let randomIndex = Number.parseInt(Math.random() * this.playList.length);
+      let randomIndex = Math.random() * this.playList.length;
       this.trackIndex = randomIndex;
     } else {
       this.trackIndex = 0;
@@ -138,14 +138,14 @@ class MusicPlayerComponent {
 
     this.loadTrack();
     this.playTrack();
-  }
+  };
 
   nextTrackIfEnded = () => {
     if (this.trackIndex < this.playList.length - 1) {
       if (!this.isRandom && !this.isOnRepeat) {
         this.trackIndex += 1;
       } else if (this.isRandom && !this.isOnRepeat) {
-        let randomIndex = Number.parseInt(Math.random() * this.playList.length);
+        let randomIndex = Math.random() * this.playList.length;
         this.trackIndex = randomIndex;
       } else if (!this.isRandom && this.isOnRepeat) {
         this.trackIndex;
@@ -158,7 +158,7 @@ class MusicPlayerComponent {
 
     this.loadTrack();
     this.playTrack();
-  }
+  };
 
   prevTrack = () => {
     if (this.trackIndex > 0) {
@@ -168,47 +168,62 @@ class MusicPlayerComponent {
     }
     this.loadTrack();
     this.playTrack();
-  }
+  };
 
   goTo = () => {
-    let seekTo = this.currentTrack.duration * (this.MRender.durationSlider.value / 100);
+    let seekTo =
+      this.currentTrack.duration * (Number(this.MRender.durationSlider.value) / 100);
     this.currentTrack.currentTime = seekTo;
-  }
+  };
 
   setVolume = () => {
-    this.currentTrack.volume = this.MRender.volumeSlider.value / 100;
-  }
+    this.currentTrack.volume = Number(this.MRender.volumeSlider.value) / 100;
+  };
 
   setUpdate = () => {
-    let seekDurationPosition = 0;
+    let seekDurationPosition: string = "0";
+
     if (!isNaN(this.currentTrack.duration)) {
-      seekDurationPosition = this.currentTrack.currentTime * (100 / this.currentTrack.duration);
+      seekDurationPosition =
+        (this.currentTrack.currentTime * (100 / this.currentTrack.duration)).toString();
       this.MRender.durationSlider.value = seekDurationPosition;
-      let currentMinutes = Math.floor(this.currentTrack.currentTime / 60);
-      let currentSeconds = Math.floor(
+      let currentMinutes: number = Math.floor(
+        this.currentTrack.currentTime / 60
+      );
+      let currentSeconds: number = Math.floor(
         this.currentTrack.currentTime - currentMinutes * 60
       );
-      let durationMinutes = Math.floor(this.currentTrack.duration / 60);
-      let durationSeconds = Math.floor(
+      let durationMinutes: number = Math.floor(this.currentTrack.duration / 60);
+      let durationSeconds: number = Math.floor(
         this.currentTrack.duration - durationMinutes * 60
       );
 
-      if (currentSeconds < 10) {
-        currentSeconds = "0" + currentSeconds;
-      }
-      if (durationSeconds < 10) {
-        durationSeconds = "0" + durationSeconds;
-      }
-      if (currentMinutes < 10) {
-        currentMinutes = "0" + currentMinutes;
-      }
-      if (durationMinutes < 10) {
-        durationMinutes = "0" + durationMinutes;
-      }
+      let currentMinutesStr: string =
+        currentMinutes < 10
+          ? "0" + currentMinutes.toString()
+          : currentMinutes.toString();
 
-      this.MRender.currentTime.textContent = currentMinutes + ":" + currentSeconds;
-      this.MRender.totalDuration.textContent = durationMinutes + ":" + durationSeconds;
+      let currentSecondsStr: string =
+        currentSeconds < 10
+          ? "0" + currentSeconds.toString()
+          : currentSeconds.toString();
+
+      let durationSecondsStr: string =
+        durationSeconds < 10
+          ? "0" + durationSeconds.toString()
+          : durationSeconds.toString();
+
+      let durationMinutesStr: string =
+        durationMinutes < 10
+          ? "0" + durationMinutes.toString()
+          : durationMinutes.toString();
+
+      this.MRender.currentTime.textContent =
+        currentMinutesStr + ":" + currentSecondsStr;
+
+      this.MRender.totalDuration.textContent =
+        durationMinutesStr + ":" + durationSecondsStr;
     }
-  }
+  };
 }
 export default MusicPlayerComponent;
