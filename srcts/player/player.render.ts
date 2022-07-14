@@ -1,4 +1,5 @@
 import CoreRender from "../CoreRender";
+import Playlist from "../model/playlist";
 import Song from "../model/song";
 
 class PlayerRender extends CoreRender {
@@ -60,30 +61,30 @@ class PlayerRender extends CoreRender {
   }
 
   getSongElement(song: Song): HTMLElement {
-    const songHTMLElement = this.createElement("div", ["player__song"]);
+    const songHTMLElement: HTMLElement = this.createElement("div", ["player__song"]);
 
-    const songHTMLDeleteElement = this.createElement("i", ["song__delete", "fa-solid", "fa-times"]);
+    const songHTMLDeleteElement: HTMLElement = this.createElement("i", ["song__delete", "fa-solid", "fa-times"]);
     songHTMLDeleteElement.setAttribute('data-del-id', String(song.id));
 
-    const songFavoriteHTMLElement = this.createElement('i', ["song__fav", "fa-solid"]);
+    const songFavoriteHTMLElement: HTMLElement = this.createElement('i', ["song__fav", "fa-solid"]);
     songFavoriteHTMLElement.classList.add(!!song.favorite ? "fa-thumbs-up" : "fa-thumbs-down");
     songFavoriteHTMLElement.setAttribute('data-fav-id', String(song.id));
 
 
-    const songHTMLPlayElement = this.createElement("i", ["fa-solid", "fa-play"]);
+    const songHTMLPlayElement: HTMLElement = this.createElement("i", ["fa-solid", "fa-play"]);
     songHTMLPlayElement.setAttribute('data-play-id', String(song.id));
 
-    const titleHTMLelement = this.createElement(
+    const titleHTMLelement: HTMLElement = this.createElement(
       "div",
       ["song__title"],
       song.title
     );
-    const singerHTMLelement = this.createElement(
+    const singerHTMLelement: HTMLElement = this.createElement(
       "div",
       ["song__singer"],
       song.singer
     );
-    const genreHTMLelement = this.createElement(
+    const genreHTMLelement: HTMLElement = this.createElement(
       "div",
       ["song__genre"],
       song.genre
@@ -96,41 +97,33 @@ class PlayerRender extends CoreRender {
       singerHTMLelement,
       genreHTMLelement,
     );
-    // if (!!song.desc) {
-    //   const lyricsHTMLelement = this.createElement(
-    //     "div",
-    //     ["song__desc"],
-    //     song.desc
-    //   );
-    //   songHTMLElement.appendChild(lyricsHTMLelement);
-    // }
     return songHTMLElement;
   }
 
-  getsongElements(player: any): HTMLElement[] {
+  getsongElements(player: Playlist): HTMLElement[] {
     return player.playlist.map((song: Song) => this.getSongElement(song));
   }
 
-  getSongListElement(player: any): HTMLElement {
+  getSongListElement(player: Playlist): HTMLElement {
     this.songListHTMLElement = this.createElement("div", [
       "player__song-list",
     ]);
-    const songHTMLElements = this.getsongElements(player);
+    const songHTMLElements: HTMLElement[] = this.getsongElements(player);
     songHTMLElements.forEach((element) =>
       this.songListHTMLElement.appendChild(element)
     );
     return this.songListHTMLElement;
   }
 
-  renderSongListElement(player: any): void {
+  renderSongListElement(player: Playlist): void {
     this.songListHTMLElement.innerHTML = "";
-    const songHTMLElements = this.getsongElements(player);
+    const songHTMLElements: HTMLElement[] = this.getsongElements(player);
     songHTMLElements.forEach((element) =>
       this.songListHTMLElement.appendChild(element)
     );
   }
 
-  getTitleElement(player: any): HTMLElement {
+  getTitleElement(player: Playlist): HTMLElement {
     return this.titleHTMLElement = this.createElement(
       "div",
       ["player__title"],
@@ -150,7 +143,7 @@ class PlayerRender extends CoreRender {
     this.titleHTMLElement.innerHTML = `<em>${title}</em>`;
   }
 
-  render(node: HTMLElement, player: any, classList: string[] = []): void {
+  render(node: HTMLElement, player: Playlist, classList: string[] = []): void {
     node.innerHTML = "";
     this.playerHTMLElement = this.createElement("div", [
       "player",

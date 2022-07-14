@@ -37,22 +37,18 @@ class MusicPlayerComponent {
     this.playList$.subscribe(1, this.loadTrack);
     this.playList$.next(this.playList);
     this.currentTrack.volume = 0.5;
-    // use observable
-    // this.loadTrack();
   }
 
-  updatePlayList(playList: any) {
+  updatePlayList(playList: Song[]): void {
     this.playList = playList;
+    this.trackIndex = 0;
     this.playList$.next(this.playList);
     this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     this.isPlaying = false;
-    this.trackIndex = 0;
-    // use observable
-    // this.loadTrack();
     this.playTrack();
   }
 
-  playFromPlayList(songID: number, playList: Song[]) {
+  playFromPlayList(songID: number, playList: Song[]): void {
     this.MRender.playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     this.isPlaying = false;
     this.playList = playList;
@@ -61,10 +57,10 @@ class MusicPlayerComponent {
     this.playTrack();
   }
 
-  loadTrack = () => {
+  loadTrack = (): void => {
     clearInterval(this.updateTimer);
     this.reset();
-    let t = this.trackIndex;
+    let t: number = this.trackIndex;
     this.currentTrack.src = this.playList[t]?.url.toString();
     this.currentTrack.load();
 
@@ -76,57 +72,57 @@ class MusicPlayerComponent {
     this.currentTrack.addEventListener("ended", this.nextTrackIfEnded);
   };
 
-  reset() {
+  reset(): void {
     this.MRender.currentTime.textContent = this.time;
     this.MRender.totalDuration.textContent = this.time;
     this.MRender.durationSlider.value = "0";
   }
 
-  randomTrack = () => {
+  randomTrack = (): void => {
     this.isRandom ? this.pauseRandom() : this.playRandom();
   };
 
-  playRandom = () => {
+  playRandom = (): void => {
     this.isRandom = true;
     this.MRender.setActiveShuffle();
   };
 
-  pauseRandom = () => {
+  pauseRandom = (): void => {
     this.isRandom = false;
     this.MRender.removeActiveShuffle();
   };
 
-  repeatTrack = () => {
+  repeatTrack = (): void => {
     this.isOnRepeat ? this.pauseRepeat() : this.playRepeat();
   };
 
-  playRepeat = () => {
+  playRepeat = (): void => {
     this.isOnRepeat = true;
     this.MRender.setActiveRepeat();
   };
 
-  pauseRepeat = () => {
+  pauseRepeat = (): void => {
     this.isOnRepeat = false;
     this.MRender.removeActiveRepeat();
   };
 
-  playPauseTrack = () => {
+  playPauseTrack = (): void => {
     this.isPlaying ? this.pauseTrack() : this.playTrack();
   };
 
-  playTrack = () => {
+  playTrack = (): void => {
     this.currentTrack.play();
     this.isPlaying = true;
     this.MRender.renderPlay();
   };
 
-  pauseTrack = () => {
+  pauseTrack = (): void => {
     this.currentTrack.pause();
     this.isPlaying = false;
     this.MRender.renderPause();
   };
 
-  nextTrack = () => {
+  nextTrack = (): void => {
     if (this.trackIndex < this.playList.length - 1 && !this.isRandom) {
       this.trackIndex += 1;
     } else if (this.trackIndex < this.playList.length - 1 && this.isRandom) {
@@ -140,7 +136,7 @@ class MusicPlayerComponent {
     this.playTrack();
   };
 
-  nextTrackIfEnded = () => {
+  nextTrackIfEnded = (): void => {
     if (this.trackIndex < this.playList.length - 1) {
       if (!this.isRandom && !this.isOnRepeat) {
         this.trackIndex += 1;
@@ -160,7 +156,7 @@ class MusicPlayerComponent {
     this.playTrack();
   };
 
-  prevTrack = () => {
+  prevTrack = (): void => {
     if (this.trackIndex > 0) {
       this.trackIndex -= 1;
     } else {
@@ -170,17 +166,17 @@ class MusicPlayerComponent {
     this.playTrack();
   };
 
-  goTo = () => {
-    let seekTo =
+  goTo = (): void => {
+    let seekTo: number =
       this.currentTrack.duration * (Number(this.MRender.durationSlider.value) / 100);
     this.currentTrack.currentTime = seekTo;
   };
 
-  setVolume = () => {
+  setVolume = (): void => {
     this.currentTrack.volume = Number(this.MRender.volumeSlider.value) / 100;
   };
 
-  setUpdate = () => {
+  setUpdate = (): void => {
     let seekDurationPosition: string = "0";
 
     if (!isNaN(this.currentTrack.duration)) {

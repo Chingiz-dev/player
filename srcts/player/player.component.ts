@@ -1,5 +1,4 @@
 import AppRender from "./player.render";
-// import DetailedSong from "./models/detailedSong.mjs";
 import Song from "../model/song";
 import Store from "../Store";
 import MusicPlayerComponent from "../musicPlayer/musicPlayer.component";
@@ -25,7 +24,10 @@ class PlayerComponent {
     this.appRender.render(entryPoint, this.album, ["some"]);
 
     this.entryNodeMusicPlayer = this.appRender.playSongHTMLElement;
-    this.musicPlayer = new MusicPlayerComponent(this.entryNodeMusicPlayer, this.album.playlist);
+    this.musicPlayer = new MusicPlayerComponent(
+      this.entryNodeMusicPlayer,
+      this.album.playlist
+    );
 
     this.title = this.appRender.inputTitleElement;
     this.singer = this.appRender.inputSingerElement;
@@ -36,10 +38,7 @@ class PlayerComponent {
       "change",
       this.changeTitle
     );
-    this.appRender.inputSubmitElement.addEventListener(
-      "click",
-      this.addSong
-    );
+    this.appRender.inputSubmitElement.addEventListener("click", this.addSong);
     this.appRender.playFavoriteOnlyHTMLElement.addEventListener(
       "click",
       this.playFavorite
@@ -49,7 +48,7 @@ class PlayerComponent {
     this.genre.addEventListener("change", this.changeInputs);
     this.url.addEventListener("change", this.changeInputs);
 
-    this.appRender.songListHTMLElement.addEventListener("click", (event) => {
+    this.appRender.songListHTMLElement.addEventListener("click", (event): void => {
       let eventElement = event.target as HTMLInputElement;
       const delID = Number(eventElement.getAttribute("data-del-id"));
       const favID = Number(eventElement.getAttribute("data-fav-id"));
@@ -66,7 +65,7 @@ class PlayerComponent {
     });
   }
 
-  changeTitle = () => {
+  changeTitle = (): void => {
     this.album.name = this.appRender.inputListTitleElement.value;
     this.appRender.renderTitleElement(
       this.appRender.inputListTitleElement.value
@@ -74,7 +73,7 @@ class PlayerComponent {
     this.appRender.inputListTitleElement.value = "";
   };
 
-  changeInputs = () => {
+  changeInputs = (): void => {
     if (
       !!this.url.value &&
       !!this.singer.value &&
@@ -114,17 +113,17 @@ class PlayerComponent {
   }
 
   playFavorite = (): void => {
-    let favoriteSongs = this.album.getFavoriteSongs();
-    if(favoriteSongs.length > 0){
+    let favoriteSongs: Song[] = this.album.getFavoriteSongs();
+    if (favoriteSongs.length > 0) {
       this.musicPlayer.updatePlayList(favoriteSongs);
     }
-  }
+  };
 
-  playFromPlaylistPoint(id: number) {
+  playFromPlaylistPoint(id: number): void {
     this.musicPlayer.playFromPlayList(id, this.album.playlist);
   }
 
-  deleteSong(id: number) {
+  deleteSong(id: number): void {
     this.album.deleteSong(id);
     this.appRender.renderSongListElement(this.album);
     this.musicPlayer.updatePlayList(this.album.playlist);
@@ -132,14 +131,14 @@ class PlayerComponent {
     this.myStore.putToStore(JSON.stringify(this.album.playlist));
   }
 
-  toggleFavoriteSong(id: number) {
+  toggleFavoriteSong(id: number): void {
     this.album.toggleFavorite(id);
     this.appRender.renderSongListElement(this.album);
     this.myStore.clearStore();
     this.myStore.putToStore(JSON.stringify(this.album.playlist));
   }
 
-  getNewId() {
+  getNewId(): number {
     return this.album.playlist.length > 0
       ? Math.max(...this.album.playlist.map((song) => song.id)) + 1
       : 1;

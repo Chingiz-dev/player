@@ -2,8 +2,8 @@ import WeatherRender from './weather.render'
 import Config from '../Config';
 
 export default class WeatherComponent {
-  private latitude: any;
-  private longitude: any;
+  private latitude: number;
+  private longitude: number;
   private APIKey: string = Config.APIKEY;
   weatherPoint: HTMLElement;
   weatherRender: WeatherRender;
