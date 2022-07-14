@@ -1,7 +1,6 @@
 plan.txt
 junk
 /node_modules
-package.json
 package-lock.json
 modules/config.mjs
 srcts/config.ts

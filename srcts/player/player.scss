@@ -1,23 +1,23 @@
 .player {
-	padding: 20px;
-	border: 2px solid white;
+  padding: 20px;
+  border: 2px solid white;
   background-color: antiquewhite;
-}
 
-.player__title {
-  padding: 5px;
-  border-bottom: 2px solid grey;
-  font-size: 35px;
-}
+  &__title {
+    padding: 5px;
+    border-bottom: 2px solid grey;
+    font-size: 35px;
+  }
 
-.player__song-list {
-  padding: 5px;
-}
+  &__song-list {
+    padding: 5px;
+  }
 
-.player__song {
-  display:flex;
-  -ms-flex-align: start;
-  margin: 5px 0;
-  border-left: 1px solid grey;
-  padding: 5px;
+  &__song {
+    display: flex;
+    -ms-flex-align: start;
+    margin: 5px 0;
+    border-left: 1px solid grey;
+    padding: 5px;
+  }
 }

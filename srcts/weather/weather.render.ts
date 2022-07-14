@@ -3,7 +3,7 @@ import CoreRender from "../CoreRender";
 class WeatherRender extends CoreRender {
   render(node: HTMLElement, data: any, classList: string[] = []): void {
     node.innerHTML = "";
-    const weatherHTMLElement = this.createElement('div', ["weather__info"]);
+    const weatherHTMLElement = this.createElement('div', ["weath__info"]);
     weatherHTMLElement.innerHTML =
       `<div> 
     ${data.name} &emsp;

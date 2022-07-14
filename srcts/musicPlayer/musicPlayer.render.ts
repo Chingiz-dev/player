@@ -46,7 +46,7 @@ class MusicPlayerRender extends CoreRender {
     const sliderContainer1 = this.createElement("div", ["sliders__slider-container"]);
     this.currentTime = this.createElement("span", ["current-time"]);
     this.totalDuration = this.createElement("span", ["total-duration"]);
-    this.durationSlider = this.createInputElement(["slider--duration"]);
+    this.durationSlider = this.createInputElement(["slider"]);
     this.durationSlider.type = 'range';
     this.durationSlider.min = "0";
     this.durationSlider.max = "100";
@@ -54,7 +54,7 @@ class MusicPlayerRender extends CoreRender {
     sliderContainer1.append(this.currentTime, this.durationSlider, this.totalDuration);
 
     const sliderContainer2 = this.createElement("div", ["sliders__slider-container"]);
-    this.volumeSlider = this.createInputElement(["slider--duration"]);
+    this.volumeSlider = this.createInputElement(["slider"]);
     this.volumeSlider.type = 'range';
     this.volumeSlider.min = "1";
     this.volumeSlider.max = "100";

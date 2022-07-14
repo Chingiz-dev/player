@@ -1,0 +1,20 @@
+{
+  "name": "player",
+  "version": "1.0.0",
+  "description": "music player for educational purposes",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "sass style.scss dist/style.css && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chingiz-dev/player.git"
+  },
+  "author": "Chingiz Shigayev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chingiz-dev/player/issues"
+  },
+  "homepage": "https://github.com/Chingiz-dev/player#readme"
+}

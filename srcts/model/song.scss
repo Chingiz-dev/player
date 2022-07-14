@@ -1,28 +1,31 @@
-.song__title {
-  color: red;
-  margin-right: 10px;
-  font-size: 20px;
-}
+.song {
 
-.song__singer {
-  margin-right: 10px;
-  font-weight: 600;
-  font-size: 20px;
+  &__title {
+    color: red;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  &__singer {
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  &__desc {
+    margin-left: 30px;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  
+  &__input {
+    margin: 3px;
+    padding: 4px;
+    border: 1px solid gold;
+    border-radius: 5px;
+  }
 }
-
-.song__desc {
-  margin-left: 30px;
-  font-weight: 300;
-  font-size: 20px;
-}
-
-.song__input {
-  margin: 3px;
-  padding: 4px;
-  border: 1px solid gold;
-  border-radius: 5px;
-}
-
+  
 .fa-thumbs-up {
   color: blue;
 }
